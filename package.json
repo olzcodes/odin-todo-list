@@ -1,0 +1,22 @@
+{
+  "name": "odin-todo-list",
+  "version": "1.0.0",
+  "description": "The aim of this project was to create a basic to-do list app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "build": "webpack",
+    "dist-ghp": "git subtree push --prefix dist origin gh-pages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/olzcodes/odin-todo-list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/olzcodes/odin-todo-list/issues"
+  },
+  "homepage": "https://github.com/olzcodes/odin-todo-list#readme"
+}
