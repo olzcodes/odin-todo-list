@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&family=Nova+Mono&family=PT+Mono&family=Quicksand:wght@500");
+
+:root.default-theme {
+  --main-color: black;
+  --background-color: whitesmoke;
+  --accent-color: tomato;
+  --accent-color-two: white;
+  --active-color: tomato;
+  --active-color-two: white;
+  --inactive-color: silver;
+}
+
+html {
+  margin: 0px;
+  padding: 0px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+}
+
+body {
+  height: 100vh;
+  background-color: var(--background-color);
+  color: var(--main-color);
+  font-family: "Quicksand", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  background-color: var(--background-color);
+}
+
+h1 {
+  font-family: "Electrolize";
+  color: var(--accent-color);
+  font-size: x-large;
+  margin: 5px 10px;
+}
