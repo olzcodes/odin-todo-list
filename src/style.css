@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Electrolize&family=Nova+Mono&family=PT+Mono&family=Quicksand:wght@500");
+@import url("https://fonts.googleapis.com/css2?family=Electrolize&family=Nova+Mono&family=PT+Mono&family=Quicksand:wght@500;700");
 
 :root.default-theme {
   --main-color: black;
   --background-color: whitesmoke;
+  --background-color-two: lightgray;
   --accent-color: tomato;
   --accent-color-two: white;
   --active-color: tomato;
@@ -19,6 +20,7 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+  /* border: 1px solid red; */
 }
 
 h1,
@@ -43,12 +45,144 @@ body {
 }
 
 header {
-  background-color: var(--background-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--background-color-two);
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px 5px;
 }
 
 h1 {
   font-family: "Electrolize";
   color: var(--accent-color);
   font-size: x-large;
-  margin: 5px 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+nav button {
+  background-color: var(--background-color-two);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  padding: 5px 8px 5px;
+}
+
+main {
+  position: relative;
+  top: 80px;
+  z-index: 0;
+
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 15px;
+}
+
+.header-bottom-row {
+  font-size: medium;
+  padding: 5px 10px 0px;
+  margin: 0px 0px 10px;
+}
+
+button.view-all-projects,
+button.toggle-project-settings {
+  background-color: var(--background-color-two);
+  color: var(--accent-color);
+  border: none;
+  font-family: "Quicksand";
+  font-size: medium;
+  text-decoration: underline;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.separator {
+  padding: 0px 10px 0px;
+}
+
+.task-container {
+}
+
+.task-card {
+  flex: 1;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+  margin: 0px 0px 20px;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: var(--accent-color-two);
+  font-family: "Quicksand";
+  font-weight: bold;
+  border-radius: 9px 9px 0px 0px;
+  padding: 5px 5px 5px 8px;
+}
+
+.task-title {
+}
+
+.delete-task {
+  font-size: large;
+  padding: 0px 5px 0px;
+}
+
+.task-details > div {
+  /* background-color: var(--accent-color-two); */
+  padding: 5px 8px 5px 8px;
+}
+
+.task-priority {
+  background-color: silver;
+  border-radius: 0px 0px 9px 9px;
+}
+
+button.new-task {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  font-size: xx-large;
+  border: 2px solid var(--accent-color-two);
+  border-radius: 50px;
+  background-color: var(--accent-color);
+  color: var(--accent-color-two);
+  padding: 0px 8px 0px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: lightgray;
+  padding: 5px;
+}
+
+footer a {
+  font-family: "Electrolize";
+  color: gray;
 }
