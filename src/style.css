@@ -3,10 +3,11 @@
 :root.default-theme {
   --main-color: black;
   --background-color: whitesmoke;
-  --background-color-two: lightgray;
-  --accent-color: tomato;
+  --background-color-two: lavenderblush;
+  --accent-color: salmon;
   --accent-color-two: white;
-  --active-color: tomato;
+  --accent-color-three: lightpink;
+  --active-color: salmon;
   --active-color-two: white;
   --inactive-color: silver;
 }
@@ -52,10 +53,10 @@ header {
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   background-color: var(--background-color-two);
-  display: flex;
-  justify-content: space-between;
+  border-bottom: 1px solid var(--accent-color-two);
 }
 
 .header-top-row {
@@ -125,7 +126,7 @@ button.toggle-project-settings {
 
 .task-card {
   flex: 1;
-  border: 1px solid var(--accent-color);
+  border: 1px solid var(--accent-color-three);
   border-radius: 10px;
   margin: 0px 0px 20px;
 }
@@ -134,12 +135,12 @@ button.toggle-project-settings {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-three);
   color: var(--accent-color-two);
   font-family: "Quicksand";
   font-weight: bold;
   border-radius: 9px 9px 0px 0px;
-  padding: 5px 5px 5px 8px;
+  padding: 5px 5px 5px 10px;
 }
 
 .task-title {
@@ -152,15 +153,20 @@ button.toggle-project-settings {
 
 .task-details > div {
   background-color: var(--accent-color-two);
-  padding: 5px 8px 5px 8px;
+  font-size: small;
+  padding: 5px 10px 5px 10px;
+}
+
+.task-details > .task-description {
+  min-height: 35px;
 }
 
 .task-details > .task-bottom-row {
   display: flex;
   justify-content: space-between;
-  background-color: silver;
+  background-color: var(--background-color-two);
   border-radius: 0px 0px 9px 9px;
-  padding: 5px 8px 5px 8px;
+  font-weight: 700;
 }
 
 .task-details > .task-priority {
@@ -175,7 +181,7 @@ button.new-task {
   border-radius: 50px;
   background-color: var(--accent-color);
   color: var(--accent-color-two);
-  padding: 0px 8px 0px;
+  padding: 0px 10px 0px;
 }
 
 footer {
