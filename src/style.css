@@ -7,7 +7,7 @@
   --accent-color: salmon;
   --accent-color-two: white;
   --accent-color-three: lightpink;
-  --active-color: salmon;
+  --active-color: tomato;
   --active-color-two: white;
   --inactive-color: silver;
 }
@@ -71,6 +71,10 @@ h1 {
   font-size: x-large;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -84,7 +88,13 @@ nav button {
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
   border-radius: 5px;
-  padding: 5px 8px 5px;
+  font-size: medium;
+  padding: 7px 8px 5px;
+}
+
+nav button:hover {
+  background-color: var(--accent-color);
+  color: var(--accent-color-two);
 }
 
 main {
@@ -97,7 +107,7 @@ main {
   justify-content: start;
   align-items: start;
   padding: 15px;
-  padding-top: 100px;
+  padding-top: 110px;
 }
 
 .header-bottom-row {
@@ -114,12 +124,22 @@ button.toggle-project-settings {
   font-family: "Quicksand";
   font-size: medium;
   text-decoration: underline;
-  padding-right: 0px;
-  padding-left: 0px;
+  letter-spacing: 0.23px;
 }
 
-.separator {
-  padding: 0px 10px 0px;
+button.view-all-projects:hover,
+button.toggle-project-settings:hover {
+  color: var(--active-color);
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
+button.view-all-projects::after,
+button.toggle-project-settings::after {
+  content: attr(data-text);
+  height: 0;
+  visibility: hidden;
+  font-weight: 700;
 }
 
 .task-container {
@@ -159,6 +179,7 @@ button.complete-task {
 }
 
 .task-title {
+  cursor: pointer;
   margin-left: 5px;
 }
 
@@ -178,6 +199,7 @@ button.task-move-up {
   background-color: var(--accent-three);
   color: var(--accent-color-two);
   border: none;
+  font-weight: 700;
   padding: 0px 6px;
 }
 
@@ -200,8 +222,21 @@ button.task-move-up {
   font-weight: 700;
 }
 
-.task-options {
+button.task-due-date {
+  cursor: pointer;
+  background-color: var(--accent-three);
+  color: var(--main-color);
+  border: none;
+  font-weight: 700;
+}
+
+button.task-options {
+  cursor: pointer;
   font-size: large;
+  background-color: var(--accent-three);
+  color: var(--main-color);
+  border: none;
+  font-weight: 700;
 }
 
 button.new-task {
