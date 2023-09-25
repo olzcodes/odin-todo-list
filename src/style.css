@@ -62,7 +62,7 @@ header {
 .header-top-row {
   display: flex;
   justify-content: space-between;
-  padding: 5px 10px 5px;
+  padding: 10px;
 }
 
 h1 {
@@ -79,6 +79,7 @@ nav {
 }
 
 nav button {
+  height: 20px;
   background-color: var(--background-color-two);
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
@@ -88,7 +89,6 @@ nav button {
 
 main {
   position: relative;
-  top: 80px;
   z-index: 0;
 
   flex: 1;
@@ -97,6 +97,7 @@ main {
   justify-content: start;
   align-items: start;
   padding: 15px;
+  padding-top: 100px;
 }
 
 .header-bottom-row {
@@ -122,6 +123,7 @@ button.toggle-project-settings {
 }
 
 .task-container {
+  width: 100%;
 }
 
 .task-card {
@@ -140,15 +142,43 @@ button.toggle-project-settings {
   font-family: "Quicksand";
   font-weight: bold;
   border-radius: 9px 9px 0px 0px;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 8px 5px 5px;
+}
+
+.task-header-left {
+  display: flex;
+  align-items: center;
+}
+
+button.complete-task {
+  background-color: var(--accent-color-three);
+  border: none;
+  color: var(--accent-color-two);
+  font-size: large;
+  padding: 0px 6px 0px;
 }
 
 .task-title {
+  margin-left: 5px;
 }
 
-.delete-task {
-  font-size: large;
-  padding: 0px 5px 0px;
+.task-title.complete {
+  text-decoration: line-through;
+  text-decoration-color: white;
+  text-decoration-thickness: 2px;
+}
+
+.task-header-right {
+  display: flex;
+  gap: 6px;
+}
+
+button.task-move-down,
+button.task-move-up {
+  background-color: var(--accent-three);
+  color: var(--accent-color-two);
+  border: none;
+  padding: 0px 6px;
 }
 
 .task-details > div {
@@ -164,12 +194,14 @@ button.toggle-project-settings {
 .task-details > .task-bottom-row {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--background-color-two);
   border-radius: 0px 0px 9px 9px;
   font-weight: 700;
 }
 
-.task-details > .task-priority {
+.task-options {
+  font-size: large;
 }
 
 button.new-task {
