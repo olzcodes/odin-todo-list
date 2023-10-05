@@ -77,31 +77,46 @@ button:hover {
   cursor: pointer;
 }
 
-nav {
+nav.top-nav {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-nav button {
+nav.top-nav button {
   height: 20px;
   background-color: var(--background-color-two);
   color: var(--accent-color);
-  border: 2px solid var(--accent-color);
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
   font-size: medium;
   padding: 7px 8px 5px;
 }
 
-nav button.btn-previous,
-nav button.btn-next {
+nav.top-nav button.btn-previous,
+nav.top-nav button.btn-next {
   width: 25px;
 }
 
-nav button:hover {
+nav.top-nav button:hover {
   background-color: var(--accent-color);
   color: var(--accent-color-two);
+}
+
+nav.breadcrumb-nav {
+  font-size: medium;
+  padding: 5px 10px 0px;
+  margin: 0px 0px 10px;
+}
+
+span {
+  padding: 0px 5px 0px;
+}
+
+span.accent {
+  color: var(--accent-color);
+  padding: 1px 6px 1px;
 }
 
 main {
@@ -115,12 +130,6 @@ main {
   align-items: start;
   padding: 15px;
   padding-top: 110px;
-}
-
-.header-bottom-row {
-  font-size: medium;
-  padding: 5px 10px 0px;
-  margin: 0px 0px 10px;
 }
 
 button.view-all-projects,
@@ -149,11 +158,13 @@ button.toggle-project-settings::after {
   font-weight: 700;
 }
 
-.task-container {
+.main-container {
   width: 100%;
 }
 
+.project-card,
 .task-card {
+  cursor: pointer;
   flex: 1;
   border: 1px solid var(--accent-color-three);
   border-radius: 10px;
@@ -186,7 +197,6 @@ button.complete-task {
 }
 
 .task-title {
-  cursor: pointer;
   margin-left: 5px;
 }
 
@@ -210,16 +220,19 @@ button.task-move-up {
   padding: 0px 6px;
 }
 
+.project-details > div,
 .task-details > div {
   background-color: var(--accent-color-two);
   font-size: small;
   padding: 5px 10px 5px 10px;
 }
 
+.project-details,
 .task-details > .task-description {
   min-height: 35px;
 }
 
+.project-details > .task-bottom-row,
 .task-details > .task-bottom-row {
   display: flex;
   justify-content: space-between;
@@ -237,6 +250,7 @@ button.task-due-date {
   font-weight: 700;
 }
 
+button.project-options,
 button.task-options {
   cursor: pointer;
   font-size: large;
