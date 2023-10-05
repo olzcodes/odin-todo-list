@@ -227,9 +227,16 @@ button.task-move-up {
   padding: 5px 10px 5px 10px;
 }
 
-.project-details,
-.task-details > .task-description {
+.project-details {
   min-height: 35px;
+}
+
+.project-details > ul {
+  padding-left: 35px;
+}
+
+.task-details > .task-description {
+  padding: 10px 15px 10px;
 }
 
 .project-details > .task-bottom-row,
