@@ -21,7 +21,7 @@ const displayAllProjects = function () {
 
 const renderAllProjects = function (projects) {
   for (let [key, value] of Object.entries(projects)) {
-    itemContainer.append(renderProjectCard(value));
+    itemContainer.prepend(renderProjectCard(value));
   }
 };
 
@@ -34,7 +34,7 @@ const displayProjectTasks = function (currentProject) {
 
 const renderTasks = function (currentProjectTasks) {
   for (let [key, value] of Object.entries(currentProjectTasks)) {
-    itemContainer.append(renderTaskCard(value));
+    itemContainer.prepend(renderTaskCard(value));
   }
 };
 
