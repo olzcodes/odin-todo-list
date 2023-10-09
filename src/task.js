@@ -1,10 +1,8 @@
-import { projects } from "./project.js";
-
 export class Task {
-  constructor(status, projectId, title, description, dueDate, priority) {
+  constructor(taskId, status, title, description, dueDate, priority) {
     this.id = `T${new Date().getTime()}`;
     this.status = status;
-    this.projectId = projectId;
+    this.taskId = taskId;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -29,7 +27,9 @@ export const renderTaskCard = function (task) {
     <div class="task-details">
       <div class="task-description">${task.description}</div>
       <div class="task-bottom-row">
-        <button class="task-due-date">${task.dueDate}</button>
+        <button class="task-due-date">${
+          task.status === "completed" ? "Completed" : task.dueDate
+        }</button>
         <button class="task-options">...</button>
       </div>
     </div>

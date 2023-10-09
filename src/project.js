@@ -1,4 +1,50 @@
-export const projects = {};
+export let projects = {
+  project1: {
+    id: "P1696810527601",
+    title: "Home",
+    tasks: [
+      {
+        id: "T1696810527601",
+        status: "completed",
+        taskId: 123,
+        title: "wash car",
+        description: "vacuum interior, wash exterior",
+        dueDate: "2023-09-29",
+        priority: "low",
+      },
+      {
+        id: "T1696810527601",
+        status: "pending",
+        taskId: 456,
+        title: "play video games",
+        description: "Zelda",
+        dueDate: "2023-10-05",
+        priority: "high",
+      },
+    ],
+  },
+  project2: {
+    id: "P1696810527601",
+    title: "Study",
+    tasks: [
+      {
+        id: "T1696810527601",
+        status: "completed",
+        taskId: 234,
+        title: "read article on OOP",
+        description:
+          "https://www.educative.io/blog/object-oriented-programming",
+        dueDate: "2023-09-28",
+        priority: "high",
+      },
+    ],
+  },
+  project3: {
+    id: "P1696810527601",
+    title: "Work",
+    tasks: [],
+  },
+};
 
 export class Project {
   constructor(title) {
@@ -14,34 +60,29 @@ export class Project {
 }
 
 export const renderProjectCard = function (project) {
-  let taskList = ``;
-
-  const renderTaskList = function (project) {
-    if (project.tasks.length === 0) {
-      taskList += `( No pending tasks )`;
-    }
+  const renderProjectDetails = function (project) {
+    let taskCount = 0;
     project.tasks.forEach((task) => {
-      taskList += `<li class="task-list-item">${task.title}</li>`;
+      if (task.status === "pending") taskCount += 1;
     });
-    return taskList;
+    return `${taskCount} pending tasks`;
   };
 
   const projectCard = document.createElement("div");
   projectCard.className = "project-card";
   projectCard.innerHTML = `
-  <div class="task-header" id="${project.id}${project.title}">
-    <div class="task-header-left">
-      <button class="complete-task">〇</button>
+  <div class="project-header" id="${project.id}${project.title}">
+    <div class="project-header-left">
       <div class="task-title">${project.title}</div>
     </div>
-    <div class="task-header-right">
-      <button class="task-move-down">ᐯ</button>
-      <button class="task-move-up">ᐱ</button>
+    <div class="project-header-right">
+      <button class="project-move-down">ᐯ</button>
+      <button class="project-move-up">ᐱ</button>
     </div>
   </div>
   <div class="project-details">
     <ul>
-      ${renderTaskList(project)}
+      ${renderProjectDetails(project)}
     </ul>
   </div>
   `;

@@ -24,6 +24,10 @@ html {
   /* border: 1px solid red; */
 }
 
+.hidden {
+  display: none;
+}
+
 h1,
 h2,
 h3,
@@ -158,7 +162,8 @@ button.toggle-project-settings::after {
   font-weight: 700;
 }
 
-.main-container {
+.item-container,
+.form-container {
   width: 100%;
 }
 
@@ -171,7 +176,9 @@ button.toggle-project-settings::after {
   margin: 0px 0px 20px;
 }
 
+.project-header,
 .task-header {
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,10 +186,39 @@ button.toggle-project-settings::after {
   color: var(--accent-color-two);
   font-family: "Quicksand";
   font-weight: bold;
-  border-radius: 9px 9px 0px 0px;
+  border-radius: 9px;
   padding: 5px 8px 5px 5px;
 }
 
+.project-header.new-project {
+  height: 40px;
+  background-color: var(--accent-color);
+}
+
+button.btn-save-project {
+  width: 40px;
+  background-color: var(--accent-color-two);
+  border: 2px solid var(--main-color);
+  border-radius: 5px;
+  padding: 5px 8px 5px;
+}
+
+input#project-title {
+  background-color: var(--accent-color);
+  color: var(--accent-color-two);
+  font-family: "Quicksand";
+  font-size: medium;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  margin-left: 3px;
+}
+
+input#project-title::placeholder {
+  color: var(--accent-color-three);
+}
+
+.project-header-left,
 .task-header-left {
   display: flex;
   align-items: center;
@@ -211,6 +247,8 @@ button.complete-task {
   gap: 6px;
 }
 
+button.project-move-down,
+button.project-move-up,
 button.task-move-down,
 button.task-move-up {
   background-color: var(--accent-three);
@@ -267,7 +305,7 @@ button.task-options {
   font-weight: 700;
 }
 
-button.new-task {
+button.btn-new-project {
   position: fixed;
   bottom: 50px;
   right: 20px;
