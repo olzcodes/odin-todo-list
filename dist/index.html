@@ -13,9 +13,9 @@
     <div class="header-top-row">
       <h1>Odin Tasks</h1>
       <nav class="top-nav">
-        <button class="btn-previous">&lt;</button>
-        <button class="btn-current">This Project</button>
-        <button class="btn-next">&gt;</button>
+        <button class="btn-view-day">Day</button>
+        <button class="btn-view-week">Week</button>
+        <button class="btn-view-month">Month</button>
       </nav>
     </div>
     <nav class="breadcrumb-nav">
@@ -27,9 +27,30 @@
     </nav>
   </header>
   <main>
-    <div class="main-container">
+    <div class="item-container">
     </div>
-    <button class="new-task">+</button>
+    <div class="form-container hidden">
+      <div class="project-card">
+        <div class="project-header new-project">
+          <div class="project-header-left">
+            <form class="form">
+              <div class="form__row">
+                <input type="text" id="project-title" name="project-title" placeholder="( My New Project )" />
+              </div>
+            </form>
+          </div>
+          <div class="project-header-right">
+            <button class="btn-save-project">Save</button>
+          </div>
+        </div>
+        <div class="project-details">
+          <ul>
+            Enter a project name and click Save
+          </ul>
+        </div>
+      </div>
+    </div>
+    <button class="btn-new-project">+</button>
   </main>
   <footer>
     <a href="https://github.com/olzcodes/odin-todo-list" class="github-link">View on GitHub</a>
