@@ -70,6 +70,7 @@ const loadProjectForm = function () {
 const saveProject = function () {
   let projectId = new Date().getTime();
   projects[projectId] = new Project(inputProjectTitle.value);
+  inputProjectTitle = "";
   formContainer.classList.add("hidden");
   console.log(projects);
   console.log(projects[projectId]);
