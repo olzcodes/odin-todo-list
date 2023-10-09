@@ -3,6 +3,7 @@ import { projects, Project, renderProjectCard } from "./project";
 import { renderTaskCard } from "./task";
 import "./style.css";
 
+let view = "projects";
 const itemContainer = document.querySelector(".item-container");
 const formContainer = document.querySelector(".form-container");
 const inputProjectTitle = document.querySelector("#project-title");
@@ -12,7 +13,8 @@ const clearItemContainer = function () {
   itemContainer.innerHTML = "";
 };
 
-const displayAllProjects = function () {
+const loadProjectsView = function () {
+  view = "projects";
   renderBreadcrumbNav("projectsView");
   clearItemContainer();
   renderAllProjects(projects);
@@ -25,7 +27,8 @@ const renderAllProjects = function (projects) {
   }
 };
 
-const displayProjectTasks = function (currentProject) {
+const loadTasksView = function (currentProject) {
+  view = "tasks";
   renderBreadcrumbNav("tasksView", currentProject);
   clearItemContainer();
   renderTasks(currentProject.tasks);
@@ -44,7 +47,7 @@ const enableTasksViewFromProjectCards = function () {
     const clickedProjectId = projectCard.children[0].getAttribute("id");
     for (let [key, value] of Object.entries(projects)) {
       if (value.id + `${value.title}` === clickedProjectId) {
-        projectCard.addEventListener("click", () => displayProjectTasks(value));
+        projectCard.addEventListener("click", () => loadTasksView(value));
         break;
       }
     }
@@ -54,11 +57,11 @@ const enableTasksViewFromProjectCards = function () {
 const enableViewAllProjectsBtn = function () {
   const btnViewAllProjects = document.querySelector(".view-all-projects");
   btnViewAllProjects.addEventListener("click", () => {
-    displayAllProjects();
+    loadProjectsView();
   });
 };
 
-displayAllProjects();
+loadProjectsView();
 
 const loadProjectForm = function () {
   formContainer.classList.remove("hidden");
@@ -70,12 +73,15 @@ const loadProjectForm = function () {
 const saveProject = function () {
   let projectId = new Date().getTime();
   projects[projectId] = new Project(inputProjectTitle.value);
-  inputProjectTitle = "";
+  inputProjectTitle.value = "";
   formContainer.classList.add("hidden");
   console.log(projects);
   console.log(projects[projectId]);
   clearItemContainer();
-  displayAllProjects();
+  loadProjectsView();
 };
 
-btnNewProject.addEventListener("click", loadProjectForm);
+btnNewProject.addEventListener("click", () => {
+  if (view === "projects") loadProjectForm();
+  // if (view === "tasks") loadTaskForm();
+});
