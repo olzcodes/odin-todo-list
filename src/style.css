@@ -269,12 +269,13 @@ button.complete-task.inactive {
 button.project-move-down,
 button.project-move-up,
 button.task-move-down,
-button.task-move-up {
+button.task-move-up,
+button.task-delete {
   background-color: var(--accent-three);
   color: var(--accent-color-two);
   border: none;
   font-weight: 700;
-  padding: 0px 6px;
+  padding: 0px 10px;
 }
 
 .project-details > div,
