@@ -4,7 +4,7 @@ import { Task, renderTaskCard } from "./task";
 import "./style.css";
 
 let view = "projects";
-let currentProject;
+let targetProject;
 const itemContainer = document.querySelector(".item-container");
 const projectFormContainer = document.querySelector(".project-form-container");
 const taskFormContainer = document.querySelector(".task-form-container");
@@ -59,12 +59,12 @@ const renderTasks = function (currentProjectTasks) {
 const enableTasksViewFromProjectCards = function () {
   const projectCardsNL = document.querySelectorAll(".project-card");
   projectCardsNL.forEach((projectCard) => {
-    const clickedProjectId = projectCard.children[0].getAttribute("id");
+    const projectCardId = projectCard.getAttribute("id");
     for (let [key, value] of Object.entries(projects)) {
-      if (value.id + value.title === clickedProjectId) {
+      if (value.id + value.title === projectCardId) {
         projectCard.addEventListener("click", () => {
           loadTasksView(value);
-          currentProject = value;
+          targetProject = value;
         });
         break;
       }
@@ -107,9 +107,7 @@ const loadTaskForm = function () {
 };
 
 const saveTask = function () {
-  console.log(currentProject);
-  console.log(projects[currentProject]);
-  currentProject.tasks.push(
+  targetProject.tasks.push(
     new Task(
       inputTaskTitle.value || "New Task",
       inputTaskDescription.value || ". . .",
@@ -121,10 +119,8 @@ const saveTask = function () {
   inputTaskTitle.value = "";
   inputTaskDescription.value = "";
   taskFormContainer.classList.add("hidden");
-  console.log(projects);
-  console.log(currentProject.tasks);
   clearItemContainer();
-  loadTasksView(currentProject);
+  loadTasksView(targetProject);
 };
 
 btnNewProject.addEventListener("click", () => {
