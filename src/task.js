@@ -21,6 +21,7 @@ export const renderTaskCard = function (task) {
       <div class="task-header-right">
         <button class="task-move-down">ᐯ</button>
         <button class="task-move-up">ᐱ</button>
+        <button class="task-delete">X</button>
       </div>
     </div>
     <div class="task-details">
