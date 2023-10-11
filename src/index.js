@@ -12,7 +12,7 @@ const inputProjectTitle = document.querySelector("#input-project-title");
 const inputTaskTitle = document.querySelector("#input-task-title");
 const inputTaskDescription = document.querySelector("#input-task-description");
 const inputTaskDueDate = document.querySelector("#input-task-due-date");
-const btnNewProject = document.querySelector(".btn-new-project");
+const btnNewItem = document.querySelector(".btn-new-item");
 
 const unloadProjectForm = function () {
   projectFormContainer.classList.add("hidden");
@@ -123,7 +123,7 @@ const saveTask = function () {
   loadTasksView(targetProject);
 };
 
-btnNewProject.addEventListener("click", () => {
+btnNewItem.addEventListener("click", () => {
   if (view === "projects") loadProjectForm();
   if (view === "tasks") loadTaskForm();
 });
