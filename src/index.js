@@ -73,7 +73,7 @@ const enableTasksViewFromProjectCards = function () {
 };
 
 const enableViewAllProjectsBtn = function () {
-  const btnViewAllProjects = document.querySelector(".view-all-projects");
+  const btnViewAllProjects = document.querySelector(".btn-view-all-projects");
   btnViewAllProjects.addEventListener("click", () => {
     loadProjectsView();
   });
