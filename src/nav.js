@@ -12,7 +12,7 @@ export const renderBreadcrumbNav = function (mode, currentProject) {
   if (mode === "tasksView") {
     breadcrumbNav.innerHTML = ``;
     breadcrumbNav.innerHTML = `
-  <button class="view-all-projects">All Projects</button>
+  <button class="btn-view-all-projects">All Projects</button>
   <span class="separator">></span>
   <span>${currentProject.title}</span>
   `;
