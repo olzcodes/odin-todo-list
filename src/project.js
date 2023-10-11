@@ -70,8 +70,9 @@ export const renderProjectCard = function (project) {
 
   const projectCard = document.createElement("div");
   projectCard.className = "project-card";
+  projectCard.setAttribute("id", `${project.id}${project.title}`);
   projectCard.innerHTML = `
-  <div class="project-header" id="${project.id}${project.title}">
+  <div class="project-header">
     <div class="project-header-left">
       <div class="project-title">${project.title}</div>
     </div>
