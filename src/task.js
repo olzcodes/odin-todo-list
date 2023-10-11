@@ -1,11 +1,10 @@
 export class Task {
-  constructor(taskId, status, title, description, dueDate, priority) {
+  constructor(title, description, dueDate, status, priority) {
     this.id = `T${new Date().getTime()}`;
-    this.status = status;
-    this.taskId = taskId;
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
+    this.status = status;
     this.priority = priority;
   }
 }
