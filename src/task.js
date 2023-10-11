@@ -15,7 +15,7 @@ export const renderTaskCard = function (task) {
   taskCard.innerHTML = `
     <div class="task-header">
       <div class="task-header-left">
-        <button class="complete-task">〇</button>
+        <button class="btn-complete-task">〇</button>
         <div class="task-title">${task.title}</div>
       </div>
       <div class="task-header-right">
@@ -27,10 +27,10 @@ export const renderTaskCard = function (task) {
     <div class="task-details">
       <div class="task-description">${task.description}</div>
       <div class="task-bottom-row">
-        <button class="task-due-date">${
+        <button class="btn-task-due-date">${
           task.status === "completed" ? "Completed" : task.dueDate
         }</button>
-        <button class="task-options">...</button>
+        <button class="btn-task-options">...</button>
       </div>
     </div>
   `;
