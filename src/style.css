@@ -13,6 +13,7 @@
 }
 
 html {
+  box-sizing: border-box;
   margin: 0px;
   padding: 0px;
 }
@@ -89,7 +90,7 @@ nav.top-nav {
 }
 
 nav.top-nav button {
-  height: 20px;
+  width: 60px;
   background-color: var(--background-color-two);
   color: var(--accent-color);
   border: 1px solid var(--accent-color);
@@ -163,7 +164,8 @@ button.toggle-project-settings::after {
 }
 
 .item-container,
-.form-container {
+.project-form-container,
+.task-form-container {
   width: 100%;
 }
 
@@ -174,6 +176,11 @@ button.toggle-project-settings::after {
   border: 1px solid var(--accent-color-three);
   border-radius: 10px;
   margin: 0px 0px 20px;
+}
+
+.project-card.active,
+.task-card.active {
+  border: 1px solid var(--accent-color);
 }
 
 .project-header,
@@ -187,23 +194,28 @@ button.toggle-project-settings::after {
   font-family: "Quicksand";
   font-weight: bold;
   border-radius: 9px;
-  padding: 5px 8px 5px 5px;
+  padding: 5px 5px 6px 5px;
 }
 
-.project-header.new-project {
+.project-header.new-project,
+.task-header.new-task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 40px;
   background-color: var(--accent-color);
 }
 
-button.btn-save-project {
-  width: 40px;
+button.btn-save-project,
+button.btn-save-task {
   background-color: var(--accent-color-two);
   border: 2px solid var(--main-color);
   border-radius: 5px;
   padding: 5px 8px 5px;
 }
 
-input#project-title {
+input#input-project-title,
+input#input-task-title {
   background-color: var(--accent-color);
   color: var(--accent-color-two);
   font-family: "Quicksand";
@@ -214,7 +226,8 @@ input#project-title {
   margin-left: 3px;
 }
 
-input#project-title::placeholder {
+input#input-project-title::placeholder,
+input#input-task-title::placeholder {
   color: var(--accent-color-three);
 }
 
@@ -232,6 +245,12 @@ button.complete-task {
   padding: 0px 6px 0px;
 }
 
+button.complete-task.inactive {
+  background-color: var(--accent-color);
+  color: var(--inactive-color);
+}
+
+.project-title,
 .task-title {
   margin-left: 5px;
 }
@@ -265,7 +284,8 @@ button.task-move-up {
   padding: 5px 10px 5px 10px;
 }
 
-.project-details {
+.project-details,
+.task-details {
   min-height: 35px;
 }
 
@@ -273,8 +293,26 @@ button.task-move-up {
   padding-left: 35px;
 }
 
-.task-details > .task-description {
+.task-details > .task-description,
+.task-details > #input-task-description {
   padding: 10px 15px 10px;
+  box-sizing: border-box;
+  height: 52px;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+textarea#input-task-description {
+  width: 100%;
+  background-color: var(--accent-color-two);
+  font-family: "Quicksand", Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  outline: none;
+  resize: none;
 }
 
 .project-details > .task-bottom-row,
@@ -285,6 +323,14 @@ button.task-move-up {
   background-color: var(--background-color-two);
   border-radius: 0px 0px 9px 9px;
   font-weight: 700;
+}
+
+input#input-task-due-date {
+  background-color: var(--accent-color-two);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  padding: 2px;
 }
 
 button.task-due-date {
