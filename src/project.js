@@ -83,9 +83,9 @@ export const renderProjectCard = function (project) {
     </div>
   </div>
   <div class="project-details">
-    <ul>
+    <div>
       ${renderProjectDetails(project)}
-    </ul>
+    </div>
   </div>
   `;
 
