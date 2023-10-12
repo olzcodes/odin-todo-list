@@ -1,5 +1,5 @@
 export let projects = {
-  P1696810527601Home: {
+  P1696810527601: {
     id: "P1696810527601",
     title: "Home",
     tasks: [
@@ -23,8 +23,8 @@ export let projects = {
       },
     ],
   },
-  P1696810527601Study: {
-    id: "P1696810527601",
+  P1696810527602: {
+    id: "P1696810527602",
     title: "Study",
     tasks: [
       {
@@ -39,8 +39,8 @@ export let projects = {
       },
     ],
   },
-  P1696810527601Work: {
-    id: "P1696810527601",
+  P1696810527603: {
+    id: "P1696810527603",
     title: "Work",
     tasks: [],
   },
@@ -70,7 +70,7 @@ export const renderProjectCard = function (project) {
 
   const projectCard = document.createElement("div");
   projectCard.className = "project-card";
-  projectCard.setAttribute("id", `${project.id}${project.title}`);
+  projectCard.setAttribute("id", `${project.id}`);
   projectCard.innerHTML = `
   <div class="project-header">
     <div class="project-header-left">
