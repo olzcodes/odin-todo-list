@@ -279,17 +279,9 @@ button.btn-task-delete {
 .project-details > div,
 .task-details > div {
   background-color: var(--accent-color-two);
-  font-size: small;
-  padding: 5px 10px 5px 10px;
-}
-
-.project-details,
-.task-details {
-  min-height: 35px;
-}
-
-.project-details > ul {
-  padding-left: 35px;
+  font-size: medium;
+  border-radius: 0px 0px 9px 9px;
+  padding: 10px 15px 10px;
 }
 
 .task-details > .task-description,
@@ -317,6 +309,7 @@ textarea#input-task-description {
 .project-details > .task-bottom-row,
 .task-details > .task-bottom-row {
   display: flex;
+  height: 40px;
   justify-content: space-between;
   align-items: center;
   background-color: var(--background-color-two);
