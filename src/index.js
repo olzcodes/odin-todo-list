@@ -93,12 +93,12 @@ const saveTask = function () {
 };
 
 const clickHandlerDivProjectDetails = function () {
-  const projectCardsNL = document.querySelectorAll(".project-card");
-  projectCardsNL.forEach((projectCard) => {
-    const projectCardId = projectCard.getAttribute("id");
+  const projectDetailsNL = document.querySelectorAll(".project-details");
+  projectDetailsNL.forEach((projectDetail) => {
+    const projectCardId = projectDetail.parentElement.getAttribute("id");
     for (let [key, value] of Object.entries(projects)) {
       if (value.id + value.title === projectCardId) {
-        projectCard.addEventListener("click", () => {
+        projectDetail.addEventListener("click", () => {
           loadTasksView(value);
           targetProject = value;
         });
