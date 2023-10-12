@@ -15,10 +15,13 @@ const inputTaskDueDate = document.querySelector("#input-task-due-date");
 const btnNewItem = document.querySelector(".btn-new-item");
 
 const unloadProjectForm = function () {
+  inputProjectTitle.value = "";
   projectFormContainer.classList.add("hidden");
 };
 
 const unloadTaskForm = function () {
+  inputTaskTitle.value = "";
+  inputTaskDescription.value = "";
   taskFormContainer.classList.add("hidden");
 };
 
@@ -32,7 +35,7 @@ const loadProjectsView = function () {
   unloadTaskForm();
   clearItemContainer();
   renderAllProjects(projects);
-  enableTasksViewFromProjectCards();
+  clickHandlerDivProjectDetails();
 };
 
 const renderAllProjects = function (projects) {
@@ -47,7 +50,7 @@ const loadTasksView = function (currentProject) {
   unloadProjectForm();
   clearItemContainer();
   renderTasks(currentProject.tasks);
-  enableViewAllProjectsBtn();
+  clickHandlerBtnViewAllProjects();
 };
 
 const renderTasks = function (currentProjectTasks) {
@@ -56,7 +59,40 @@ const renderTasks = function (currentProjectTasks) {
   }
 };
 
-const enableTasksViewFromProjectCards = function () {
+const loadProjectForm = function () {
+  projectFormContainer.classList.remove("hidden");
+  inputProjectTitle.focus();
+};
+
+const saveProject = function () {
+  let projectId = `P${new Date().getTime()}`;
+  projects[projectId] = new Project(inputProjectTitle.value || "New Project");
+  unloadProjectForm();
+  clearItemContainer();
+  loadProjectsView();
+};
+
+const loadTaskForm = function () {
+  taskFormContainer.classList.remove("hidden");
+  inputTaskTitle.focus();
+};
+
+const saveTask = function () {
+  targetProject.tasks.push(
+    new Task(
+      inputTaskTitle.value || "New Task",
+      inputTaskDescription.value || ". . .",
+      inputTaskDueDate.value || "( no due date )",
+      "pending",
+      "medium"
+    )
+  );
+  unloadTaskForm();
+  clearItemContainer();
+  loadTasksView(targetProject);
+};
+
+const clickHandlerDivProjectDetails = function () {
   const projectCardsNL = document.querySelectorAll(".project-card");
   projectCardsNL.forEach((projectCard) => {
     const projectCardId = projectCard.getAttribute("id");
@@ -72,58 +108,33 @@ const enableTasksViewFromProjectCards = function () {
   });
 };
 
-const enableViewAllProjectsBtn = function () {
+const clickHandlerBtnViewAllProjects = function () {
   const btnViewAllProjects = document.querySelector(".btn-view-all-projects");
   btnViewAllProjects.addEventListener("click", () => {
     loadProjectsView();
   });
 };
 
-loadProjectsView();
+const clickHandlerBtnNewItem = function () {
+  btnNewItem.addEventListener("click", () => {
+    if (view === "projects") loadProjectForm();
+    if (view === "tasks") loadTaskForm();
+  });
+};
 
-const loadProjectForm = function () {
-  projectFormContainer.classList.remove("hidden");
-  inputProjectTitle.focus();
+const clickHandlerBtnSaveProject = function () {
   const btnSaveProject = document.querySelector(".btn-save-project");
   btnSaveProject.addEventListener("click", saveProject);
 };
 
-const saveProject = function () {
-  let projectId = `P${new Date().getTime()}`;
-  projects[projectId] = new Project(inputProjectTitle.value || "New Project");
-  inputProjectTitle.value = "";
-  projectFormContainer.classList.add("hidden");
-  console.log(projects);
-  console.log(projects[projectId]);
-  clearItemContainer();
-  loadProjectsView();
-};
-
-const loadTaskForm = function () {
-  taskFormContainer.classList.remove("hidden");
-  inputTaskTitle.focus();
+const clickHandlerBtnSaveTask = function () {
   const btnSaveTask = document.querySelector(".btn-save-task");
   btnSaveTask.addEventListener("click", saveTask);
 };
 
-const saveTask = function () {
-  targetProject.tasks.push(
-    new Task(
-      inputTaskTitle.value || "New Task",
-      inputTaskDescription.value || ". . .",
-      inputTaskDueDate.value || "( no due date )",
-      "pending",
-      "medium"
-    )
-  );
-  inputTaskTitle.value = "";
-  inputTaskDescription.value = "";
-  taskFormContainer.classList.add("hidden");
-  clearItemContainer();
-  loadTasksView(targetProject);
-};
-
-btnNewItem.addEventListener("click", () => {
-  if (view === "projects") loadProjectForm();
-  if (view === "tasks") loadTaskForm();
-});
+(function () {
+  loadProjectsView();
+  clickHandlerBtnNewItem();
+  clickHandlerBtnSaveProject();
+  clickHandlerBtnSaveTask();
+})();
