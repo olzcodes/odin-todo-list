@@ -74,6 +74,8 @@ const saveProject = function () {
 };
 
 const deleteProject = function (e) {
+  const confirmDelete = confirm(`Delete this project?`);
+  if (!confirmDelete) return;
   const projectId = e.target.closest(".project-card").id;
   delete projects[projectId];
   loadProjectsView();
