@@ -276,6 +276,15 @@ button.btn-task-delete {
   padding: 0px 10px;
 }
 
+button.btn-project-move-down:hover,
+button.btn-project-move-up:hover,
+button.btn-task-move-down:hover,
+button.btn-task-move-up:hover,
+button.btn-project-delete:hover,
+button.btn-task-delete:hover {
+  color: var(--accent-color);
+}
+
 .project-details > div,
 .task-details > div {
   background-color: var(--accent-color-two);
