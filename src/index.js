@@ -151,5 +151,4 @@ const clickHandlerBtnProjectDelete = function () {
   clickHandlerBtnNewItem();
   clickHandlerBtnSaveProject();
   clickHandlerBtnSaveTask();
-  clickHandlerBtnProjectDelete();
 })();
