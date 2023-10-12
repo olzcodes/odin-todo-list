@@ -1,5 +1,5 @@
 export let projects = {
-  project1: {
+  P1696810527601Home: {
     id: "P1696810527601",
     title: "Home",
     tasks: [
@@ -23,7 +23,7 @@ export let projects = {
       },
     ],
   },
-  project2: {
+  P1696810527601Study: {
     id: "P1696810527601",
     title: "Study",
     tasks: [
@@ -39,7 +39,7 @@ export let projects = {
       },
     ],
   },
-  project3: {
+  P1696810527601Work: {
     id: "P1696810527601",
     title: "Work",
     tasks: [],
