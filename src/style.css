@@ -267,6 +267,7 @@ button.btn-project-move-down,
 button.btn-project-move-up,
 button.btn-task-move-down,
 button.btn-task-move-up,
+button.btn-project-delete,
 button.btn-task-delete {
   background-color: var(--accent-three);
   color: var(--accent-color-two);
