@@ -36,6 +36,7 @@ const loadProjectsView = function () {
   clearItemContainer();
   renderAllProjects(projects);
   clickHandlerDivProjectDetails();
+  clickHandlerBtnProjectDelete();
 };
 
 const renderAllProjects = function (projects) {
@@ -69,6 +70,12 @@ const saveProject = function () {
   projects[projectId] = new Project(inputProjectTitle.value || "New Project");
   unloadProjectForm();
   clearItemContainer();
+  loadProjectsView();
+};
+
+const deleteProject = function (e) {
+  const projectId = e.target.closest(".project-card").id;
+  delete projects[projectId];
   loadProjectsView();
 };
 
@@ -132,9 +139,17 @@ const clickHandlerBtnSaveTask = function () {
   btnSaveTask.addEventListener("click", saveTask);
 };
 
+const clickHandlerBtnProjectDelete = function () {
+  const deleteButtonsNL = document.querySelectorAll(".btn-project-delete");
+  deleteButtonsNL.forEach((button) =>
+    button.addEventListener("click", deleteProject.bind(this))
+  );
+};
+
 (function () {
   loadProjectsView();
   clickHandlerBtnNewItem();
   clickHandlerBtnSaveProject();
   clickHandlerBtnSaveTask();
+  clickHandlerBtnProjectDelete();
 })();
