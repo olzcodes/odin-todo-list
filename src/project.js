@@ -79,7 +79,7 @@ export const renderProjectCard = function (project) {
     <div class="project-header-right">
       <button class="btn-project-move-down">ᐯ</button>
       <button class="btn-project-move-up">ᐱ</button>
-      <button class="btn-task-delete">X</button>
+      <button class="btn-project-delete">X</button>
     </div>
   </div>
   <div class="project-details">
