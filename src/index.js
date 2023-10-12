@@ -104,7 +104,7 @@ const clickHandlerDivProjectDetails = function () {
   projectDetailsNL.forEach((projectDetail) => {
     const projectCardId = projectDetail.parentElement.getAttribute("id");
     for (let [key, value] of Object.entries(projects)) {
-      if (value.id + value.title === projectCardId) {
+      if (value.id === projectCardId) {
         projectDetail.addEventListener("click", () => {
           loadTasksView(value);
           targetProject = value;
