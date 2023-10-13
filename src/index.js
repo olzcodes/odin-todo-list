@@ -45,17 +45,17 @@ const renderAllProjects = function (projects) {
   }
 };
 
-const loadTasksView = function (currentProject) {
+const loadTasksView = function (targetProject) {
   view = "tasks";
-  renderBreadcrumbNav("tasksView", currentProject);
+  renderBreadcrumbNav("tasksView", targetProject);
   unloadProjectForm();
   clearItemContainer();
-  renderTasks(currentProject.tasks);
+  renderTasks(targetProject.tasks);
   clickHandlerBtnViewAllProjects();
 };
 
-const renderTasks = function (currentProjectTasks) {
-  for (let [key, value] of Object.entries(currentProjectTasks)) {
+const renderTasks = function (targetProjectTasks) {
+  for (let [key, value] of Object.entries(targetProjectTasks)) {
     itemContainer.prepend(renderTaskCard(value));
   }
 };
