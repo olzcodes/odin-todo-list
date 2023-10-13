@@ -52,6 +52,7 @@ const loadTasksView = function (targetProject) {
   clearItemContainer();
   renderTasks(targetProject.tasks);
   clickHandlerBtnViewAllProjects();
+  clickHandlerBtnDeleteTask();
 };
 
 const renderTasks = function (targetProjectTasks) {
@@ -101,6 +102,17 @@ const saveTask = function () {
   loadTasksView(targetProject);
 };
 
+const deleteTask = function (e) {
+  const confirmDelete = confirm(`Delete this task?`);
+  if (!confirmDelete) return;
+  const taskId = e.target.closest(".task-card").dataset.taskId;
+  const remainingTasks = targetProject.tasks.filter(
+    (task) => task.id !== taskId
+  );
+  targetProject.tasks = remainingTasks;
+  loadTasksView(targetProject);
+};
+
 const clickHandlerDivProjectDetails = function () {
   const projectDetailsNL = document.querySelectorAll(".project-details");
   projectDetailsNL.forEach((projectDetail) => {
@@ -142,6 +154,13 @@ const clickHandlerBtnDeleteProject = function () {
   );
   deleteProjectButtonsNL.forEach((button) =>
     button.addEventListener("click", deleteProject.bind(this))
+  );
+};
+
+const clickHandlerBtnDeleteTask = function () {
+  const deleteTaskButtonsNL = document.querySelectorAll(".btn-task-delete");
+  deleteTaskButtonsNL.forEach((button) =>
+    button.addEventListener("click", deleteTask.bind(this))
   );
 };
 
