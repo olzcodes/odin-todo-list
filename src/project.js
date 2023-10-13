@@ -70,7 +70,7 @@ export const renderProjectCard = function (project) {
 
   const projectCard = document.createElement("div");
   projectCard.className = "project-card";
-  projectCard.setAttribute("id", `${project.id}`);
+  projectCard.dataset.projectId = project.id;
   projectCard.innerHTML = `
   <div class="project-header">
     <div class="project-header-left">
