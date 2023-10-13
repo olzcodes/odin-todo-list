@@ -12,6 +12,7 @@ export class Task {
 export const renderTaskCard = function (task) {
   const taskCard = document.createElement("div");
   taskCard.className = "task-card";
+  taskCard.dataset.taskId = task.id;
   taskCard.innerHTML = `
     <div class="task-header">
       <div class="task-header-left">
