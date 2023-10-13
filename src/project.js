@@ -4,7 +4,7 @@ export let projects = {
     title: "Home",
     tasks: [
       {
-        id: "T1696810527601",
+        id: "T1696810527601a",
         status: "completed",
         taskId: 123,
         title: "wash car",
@@ -13,7 +13,7 @@ export let projects = {
         priority: "low",
       },
       {
-        id: "T1696810527601",
+        id: "T1696810527601b",
         status: "pending",
         taskId: 456,
         title: "play video games",
@@ -28,7 +28,7 @@ export let projects = {
     title: "Study",
     tasks: [
       {
-        id: "T1696810527601",
+        id: "T1696810527602a",
         status: "completed",
         taskId: 234,
         title: "read article on OOP",
