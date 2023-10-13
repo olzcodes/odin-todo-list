@@ -75,9 +75,11 @@ const saveProject = function () {
 };
 
 const deleteProject = function (e) {
-  const confirmDelete = confirm(`Delete this project?`);
-  if (!confirmDelete) return;
   const projectId = e.target.closest(".project-card").dataset.projectId;
+  const projectTitle = projects[projectId].title;
+  console.log(projectTitle);
+  const confirmDelete = confirm(`${projectTitle} - Delete this project?`);
+  if (!confirmDelete) return;
   delete projects[projectId];
   loadProjectsView();
 };
@@ -103,9 +105,11 @@ const saveTask = function () {
 };
 
 const deleteTask = function (e) {
-  const confirmDelete = confirm(`Delete this task?`);
-  if (!confirmDelete) return;
   const taskId = e.target.closest(".task-card").dataset.taskId;
+  const taskTitle = targetProject.tasks.filter((task) => task.id === taskId)[0]
+    .title;
+  const confirmDelete = confirm(`${taskTitle} - Delete this task?`);
+  if (!confirmDelete) return;
   const remainingTasks = targetProject.tasks.filter(
     (task) => task.id !== taskId
   );
