@@ -143,6 +143,7 @@ const clickHandlerBtnProjectDelete = function () {
   );
 };
 
+// Initialize app
 (function () {
   loadProjectsView();
   clickHandlerBtnNewItem();
