@@ -36,7 +36,7 @@ const loadProjectsView = function () {
   clearItemContainer();
   renderAllProjects(projects);
   clickHandlerDivProjectDetails();
-  clickHandlerBtnProjectDelete();
+  clickHandlerBtnDeleteProject();
 };
 
 const renderAllProjects = function (projects) {
@@ -136,7 +136,7 @@ const clickHandlerBtnSaveTask = function () {
   btnSaveTask.addEventListener("click", saveTask);
 };
 
-const clickHandlerBtnProjectDelete = function () {
+const clickHandlerBtnDeleteProject = function () {
   const deleteButtonsNL = document.querySelectorAll(".btn-project-delete");
   deleteButtonsNL.forEach((button) =>
     button.addEventListener("click", deleteProject.bind(this))
