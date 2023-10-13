@@ -137,8 +137,10 @@ const clickHandlerBtnSaveTask = function () {
 };
 
 const clickHandlerBtnDeleteProject = function () {
-  const deleteButtonsNL = document.querySelectorAll(".btn-project-delete");
-  deleteButtonsNL.forEach((button) =>
+  const deleteProjectButtonsNL = document.querySelectorAll(
+    ".btn-project-delete"
+  );
+  deleteProjectButtonsNL.forEach((button) =>
     button.addEventListener("click", deleteProject.bind(this))
   );
 };
