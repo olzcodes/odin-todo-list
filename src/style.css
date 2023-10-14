@@ -194,6 +194,11 @@ button.btn-view-all-projects::after {
   padding: 5px 5px 6px 5px;
 }
 
+.project-header:hover .input-project-title,
+.task-header:hover .input-task-title {
+  color: var(--main-color);
+}
+
 .project-header.new-project,
 .task-header.new-task {
   display: flex;
@@ -213,6 +218,7 @@ button.btn-save-task {
 
 input#input-project-title,
 input#input-task-title {
+  flex: 1;
   background-color: var(--accent-color);
   color: var(--accent-color-two);
   font-family: "Quicksand";
@@ -220,7 +226,7 @@ input#input-task-title {
   font-weight: bold;
   border: none;
   outline: none;
-  margin-left: 3px;
+  margin-left: 5px;
 }
 
 input#input-project-title::placeholder,
@@ -228,16 +234,30 @@ input#input-task-title::placeholder {
   color: var(--accent-color-three);
 }
 
+input.input-project-title,
+input.input-task-title {
+  flex: 1;
+  background-color: var(--accent-color-three);
+  color: var(--accent-color-two);
+  font-family: "Quicksand";
+  font-size: medium;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+
 .project-header-left,
 .task-header-left {
+  flex: 1;
   display: flex;
   align-items: center;
 }
 
 button.btn-complete-task {
   background-color: var(--accent-color-three);
-  border: none;
   color: var(--accent-color-two);
+  border: none;
   font-size: large;
   padding: 0px 6px 0px;
 }
@@ -247,14 +267,9 @@ button.btn-complete-task.inactive {
   color: var(--inactive-color);
 }
 
-.project-title,
-.task-title {
-  margin-left: 5px;
-}
-
 .task-title.complete {
   text-decoration: line-through;
-  text-decoration-color: white;
+  text-decoration-color: var(--accent-color-two);
   text-decoration-thickness: 2px;
 }
 
@@ -293,26 +308,22 @@ button.btn-task-delete:hover {
   padding: 10px 15px 10px;
 }
 
-.task-details > .task-description,
-.task-details > #input-task-description {
-  padding: 10px 15px 10px;
-  box-sizing: border-box;
-  height: 52px;
-}
-
 .task-details {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-textarea#input-task-description {
+textarea#input-task-description,
+textarea.input-task-description {
   width: 100%;
   background-color: var(--accent-color-two);
   font-family: "Quicksand", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: medium;
   border: none;
   outline: none;
   resize: none;
+  padding: 10px 15px 10px;
 }
 
 .project-details > .task-bottom-row,
