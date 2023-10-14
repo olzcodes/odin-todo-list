@@ -1,6 +1,7 @@
 import { renderBreadcrumbNav } from "./nav";
 import { projects, Project, renderProjectCard } from "./project";
 import { Task, renderTaskCard } from "./task";
+import { inputHandlerProjectTitle, inputHandlerTaskTitle, inputHandlerTaskDescription } from "./autosave"; // prettier-ignore
 import "./style.css";
 
 let view = "projects";
@@ -37,6 +38,7 @@ const loadProjectsView = function () {
   renderAllProjects(projects);
   clickHandlerDivProjectDetails();
   clickHandlerBtnDeleteProject();
+  inputHandlerProjectTitle();
 };
 
 const renderAllProjects = function (projects) {
@@ -53,6 +55,8 @@ const loadTasksView = function (targetProject) {
   renderTasks(targetProject.tasks);
   clickHandlerBtnViewAllProjects();
   clickHandlerBtnDeleteTask();
+  inputHandlerTaskDescription(targetProject);
+  inputHandlerTaskTitle(targetProject);
 };
 
 const renderTasks = function (targetProjectTasks) {
