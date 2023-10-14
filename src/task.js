@@ -17,7 +17,7 @@ export const renderTaskCard = function (task) {
     <div class="task-header">
       <div class="task-header-left">
         <button class="btn-complete-task">〇</button>
-        <div class="task-title">${task.title}</div>
+        <input class="input-task-title" value="${task.title}" />
       </div>
       <div class="task-header-right">
         <button class="btn-task-move-down">ᐯ</button>
@@ -26,7 +26,9 @@ export const renderTaskCard = function (task) {
       </div>
     </div>
     <div class="task-details">
-      <div class="task-description">${task.description}</div>
+      <textarea class="input-task-description" name="task-description">${
+        task.description
+      }</textarea>
       <div class="task-bottom-row">
         <button class="btn-task-due-date">${
           task.status === "completed" ? "Completed" : task.dueDate
