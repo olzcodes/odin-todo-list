@@ -2,8 +2,8 @@ import { renderBreadcrumbNav } from "./nav";
 import { Project, renderProjectCard } from "./project";
 import { Task, renderTaskCard } from "./task";
 import { inputHandlerProjectTitle, inputHandlerTaskTitle, inputHandlerTaskDescription } from "./autosave"; // prettier-ignore
-import { saveToLocalStorage, loadFromLocalStorage } from "./localstorage";
-import { demoProjects } from "./demo-data";
+import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
+import { demoProjects } from "./demoData";
 import "./style.css";
 
 export let projects = loadFromLocalStorage() || demoProjects;
