@@ -1,7 +1,9 @@
-import { projects } from "./project";
+import { projects } from "./index.js";
+import { saveToLocalStorage } from "./localstorage";
 
 const autoSaveProjectTitleChanges = function (projectId, title) {
   projects[projectId].title = title.value;
+  saveToLocalStorage();
 };
 
 export const inputHandlerProjectTitle = function () {
@@ -20,6 +22,7 @@ export const inputHandlerProjectTitle = function () {
 const autoSaveTaskTitleChanges = function (targetProject, taskId, taskTitle) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) task.title = taskTitle.value;
+    saveToLocalStorage();
   });
 };
 
@@ -43,6 +46,7 @@ const autoSaveTaskDescriptionChanges = function (
 ) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) task.description = taskDescription.value;
+    saveToLocalStorage();
   });
 };
 
