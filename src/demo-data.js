@@ -1,4 +1,4 @@
-export let dummyProjects = {
+export let demoProjects = {
   P1696810527601: {
     id: "P1696810527601",
     title: "Home",
