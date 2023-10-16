@@ -1,8 +1,12 @@
 import { renderBreadcrumbNav } from "./nav";
-import { projects, Project, renderProjectCard } from "./project";
+import { Project, renderProjectCard } from "./project";
 import { Task, renderTaskCard } from "./task";
 import { inputHandlerProjectTitle, inputHandlerTaskTitle, inputHandlerTaskDescription } from "./autosave"; // prettier-ignore
+import { saveToLocalStorage, loadFromLocalStorage } from "./localstorage";
+import { demoProjects } from "./demo-data";
 import "./style.css";
+
+export let projects = loadFromLocalStorage() || demoProjects;
 
 let view = "projects";
 let targetProject;
@@ -73,6 +77,7 @@ const loadProjectForm = function () {
 const saveProject = function () {
   let projectId = `P${new Date().getTime()}`;
   projects[projectId] = new Project(inputProjectTitle.value || "New Project");
+  saveToLocalStorage();
   unloadProjectForm();
   clearItemContainer();
   loadProjectsView();
@@ -81,10 +86,10 @@ const saveProject = function () {
 const deleteProject = function (e) {
   const projectId = e.target.closest(".project-card").dataset.projectId;
   const projectTitle = projects[projectId].title;
-  console.log(projectTitle);
   const confirmDelete = confirm(`${projectTitle} - Delete this project?`);
   if (!confirmDelete) return;
   delete projects[projectId];
+  saveToLocalStorage();
   loadProjectsView();
 };
 
@@ -103,6 +108,7 @@ const saveTask = function () {
       "medium"
     )
   );
+  saveToLocalStorage();
   unloadTaskForm();
   clearItemContainer();
   loadTasksView(targetProject);
@@ -118,6 +124,7 @@ const deleteTask = function (e) {
     (task) => task.id !== taskId
   );
   targetProject.tasks = remainingTasks;
+  saveToLocalStorage();
   loadTasksView(targetProject);
 };
 
