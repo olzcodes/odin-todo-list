@@ -1,5 +1,5 @@
 import { projects } from "./index.js";
-import { saveToLocalStorage } from "./localstorage";
+import { saveToLocalStorage } from "./localStorage";
 
 const autoSaveProjectTitleChanges = function (projectId, title) {
   projects[projectId].title = title.value;
