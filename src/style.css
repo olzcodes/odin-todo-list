@@ -99,11 +99,6 @@ nav.top-nav button {
   padding: 7px 8px 5px;
 }
 
-nav.top-nav button.btn-previous,
-nav.top-nav button.btn-next {
-  width: 25px;
-}
-
 nav.top-nav button:hover {
   background-color: var(--accent-color);
   color: var(--accent-color-two);
@@ -154,15 +149,12 @@ button.btn-view-all-projects:hover {
 }
 
 button.btn-view-all-projects::after {
-  content: attr(data-text);
   height: 0;
   visibility: hidden;
   font-weight: 700;
 }
 
-.item-container,
-.project-form-container,
-.task-form-container {
+.item-container {
   width: 100%;
 }
 
@@ -173,11 +165,6 @@ button.btn-view-all-projects::after {
   border: 1px solid var(--accent-color-three);
   border-radius: 10px;
   margin: 0px 0px 20px;
-}
-
-.project-card.active,
-.task-card.active {
-  border: 1px solid var(--accent-color);
 }
 
 .project-header,
@@ -214,24 +201,6 @@ button.btn-save-task {
   border: 2px solid var(--main-color);
   border-radius: 5px;
   padding: 5px 8px 5px;
-}
-
-input#input-project-title,
-input#input-task-title {
-  flex: 1;
-  background-color: var(--accent-color);
-  color: var(--accent-color-two);
-  font-family: "Quicksand";
-  font-size: medium;
-  font-weight: bold;
-  border: none;
-  outline: none;
-  margin-left: 5px;
-}
-
-input#input-project-title::placeholder,
-input#input-task-title::placeholder {
-  color: var(--accent-color-three);
 }
 
 input.input-project-title,
@@ -314,7 +283,6 @@ button.btn-task-delete:hover {
   justify-content: space-between;
 }
 
-textarea#input-task-description,
 textarea.input-task-description {
   width: 100%;
   background-color: var(--accent-color-two);
@@ -334,22 +302,6 @@ textarea.input-task-description {
   align-items: center;
   background-color: var(--background-color-two);
   border-radius: 0px 0px 9px 9px;
-  font-weight: 700;
-}
-
-input#input-task-due-date {
-  background-color: var(--accent-color-two);
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  padding: 2px;
-}
-
-button.btn-task-due-date {
-  cursor: pointer;
-  background-color: var(--accent-three);
-  color: var(--main-color);
-  border: none;
   font-weight: 700;
 }
 
