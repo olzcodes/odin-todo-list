@@ -26,13 +26,9 @@ export const renderTaskCard = function (task) {
       </div>
     </div>
     <div class="task-details">
-      <textarea class="input-task-description" name="task-description">${
-        task.description
-      }</textarea>
+      <textarea class="input-task-description" name="task-description">${task.description}</textarea>
       <div class="task-bottom-row">
-        <button class="btn-task-due-date">${
-          task.status === "completed" ? "Completed" : task.dueDate
-        }</button>
+        <input type="date" class="input-task-due-date" value=${task.dueDate} />
         <button class="btn-task-options">...</button>
       </div>
     </div>
