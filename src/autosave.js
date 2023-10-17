@@ -64,3 +64,27 @@ export const inputHandlerTaskDescription = function (targetProject) {
     })
   );
 };
+
+const autoSaveTaskDueDateChanges = function (
+  targetProject,
+  taskId,
+  taskDueDate
+) {
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) task.dueDate = taskDueDate.value;
+    saveToLocalStorage();
+  });
+};
+
+export const inputHandlerTaskDueDate = function (targetProject) {
+  const taskDueDateNL = document.querySelectorAll(".input-task-due-date");
+
+  if (!taskDueDateNL) return;
+
+  taskDueDateNL.forEach((dueDate) =>
+    dueDate.addEventListener("input", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      autoSaveTaskDueDateChanges(targetProject, taskId, dueDate);
+    })
+  );
+};
