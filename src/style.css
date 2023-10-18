@@ -186,13 +186,25 @@ button.btn-view-all-projects::after {
   color: var(--main-color);
 }
 
-.project-header.new-project,
-.task-header.new-task {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 40px;
-  background-color: var(--accent-color);
+.task-header.completed,
+.task-header.completed:focus-within {
+  background-color: var(--inactive-color);
+}
+
+.task-details.completed {
+  display: none;
+}
+
+.task-card:hover .task-details.completed {
+  display: block;
+}
+
+input.input-task-title.completed {
+  text-decoration: line-through;
+}
+
+.task-card.completed {
+  border: 1px solid var(--inactive-color);
 }
 
 button.btn-save-project,
@@ -206,7 +218,7 @@ button.btn-save-task {
 input.input-project-title,
 input.input-task-title {
   flex: 1;
-  background-color: var(--accent-color-three);
+  background-color: inherit;
   color: var(--accent-color-two);
   font-family: "Quicksand";
   font-size: medium;
@@ -214,6 +226,11 @@ input.input-task-title {
   border: none;
   outline: none;
   margin-left: 5px;
+}
+
+input.input-project-title:focus,
+input.input-task-title:focus {
+  background-color: inherit;
 }
 
 .project-header-left,
@@ -224,7 +241,7 @@ input.input-task-title {
 }
 
 button.btn-task-status {
-  background-color: var(--accent-color-three);
+  background-color: inherit;
   color: var(--accent-color-two);
   border: none;
   font-size: large;
@@ -239,9 +256,9 @@ button.btn-task-status.completed::after {
   content: "◉";
 }
 
-button.btn-task-pending.inactive {
+.project-header:focus-within,
+.task-header:focus-within {
   background-color: var(--accent-color);
-  color: var(--inactive-color);
 }
 
 .task-title.completed {
@@ -274,7 +291,7 @@ button.btn-task-move-down:hover,
 button.btn-task-move-up:hover,
 button.btn-project-delete:hover,
 button.btn-task-delete:hover {
-  color: var(--accent-color);
+  color: var(--main-color);
 }
 
 .project-details > div,
