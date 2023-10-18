@@ -223,7 +223,7 @@ input.input-task-title {
   align-items: center;
 }
 
-button.btn-complete-task {
+button.btn-task-status {
   background-color: var(--accent-color-three);
   color: var(--accent-color-two);
   border: none;
@@ -231,12 +231,20 @@ button.btn-complete-task {
   padding: 0px 6px 0px;
 }
 
-button.btn-complete-task.inactive {
+button.btn-task-status.pending::after {
+  content: "〇";
+}
+
+button.btn-task-status.completed::after {
+  content: "◉";
+}
+
+button.btn-task-pending.inactive {
   background-color: var(--accent-color);
   color: var(--inactive-color);
 }
 
-.task-title.complete {
+.task-title.completed {
   text-decoration: line-through;
   text-decoration-color: var(--accent-color-two);
   text-decoration-thickness: 2px;
