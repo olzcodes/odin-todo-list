@@ -1,7 +1,7 @@
 import { renderBreadcrumbNav } from "./nav";
 import { Project, renderProjectCard } from "./project";
 import { Task, renderTaskCard } from "./task";
-import { inputHandlerProjectTitle, inputHandlerTaskTitle, inputHandlerTaskDescription, inputHandlerTaskDueDate } from "./autosave"; // prettier-ignore
+import { inputHandlerProjectTitle, clickHandlerBtnTaskStatus, inputHandlerTaskTitle, inputHandlerTaskDescription, inputHandlerTaskDueDate } from "./autosave"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 import "./style.css";
@@ -39,6 +39,7 @@ const loadTasksView = function (targetProject) {
   clearItemContainer();
   renderTasks(targetProject.tasks);
   clickHandlerBtnViewAllProjects();
+  clickHandlerBtnTaskStatus(targetProject);
   inputHandlerTaskTitle(targetProject);
   clickHandlerBtnDeleteTask();
   inputHandlerTaskDescription(targetProject);
