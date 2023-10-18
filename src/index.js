@@ -53,7 +53,7 @@ const renderTasks = function (targetProjectTasks) {
 };
 
 const createNewProject = function () {
-  const project = new Project("");
+  const project = new Project("", "", []);
   project.id = `P${new Date().getTime()}`;
   projects[project.id] = project;
   saveToLocalStorage();
@@ -80,7 +80,7 @@ const deleteProject = function (e) {
 };
 
 const createNewTask = function () {
-  targetProject.tasks.push(new Task("", "", "", "pending", "medium"));
+  targetProject.addTask(new Task("", "", "", "pending", "medium"));
   saveToLocalStorage();
   clearItemContainer();
   loadTasksView(targetProject);
@@ -96,10 +96,7 @@ const deleteTask = function (e) {
     taskTitle ? `${taskTitle} - Delete this task?` : "Delete this task?"
   );
   if (!confirmDelete) return;
-  const remainingTasks = targetProject.tasks.filter(
-    (task) => task.id !== taskId
-  );
-  targetProject.tasks = remainingTasks;
+  targetProject.deleteTask(taskId);
   saveToLocalStorage();
   loadTasksView(targetProject);
 };
