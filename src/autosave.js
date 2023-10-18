@@ -22,11 +22,22 @@ export const inputHandlerProjectTitle = function () {
 const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) {
-      task.status === "completed"
-        ? (task.status = "pending")
-        : (task.status = "completed");
+      task.status === "pending"
+        ? (task.status = "completed")
+        : (task.status = "pending");
+
+      button.blur();
       button.classList.toggle("completed");
       button.classList.toggle("pending");
+      button.nextElementSibling.classList.toggle("completed");
+      button.parentElement.parentElement.classList.toggle("completed");
+      button.parentElement.parentElement.nextElementSibling.classList.toggle(
+        "completed"
+      );
+      button.parentElement.parentElement.parentElement.classList.toggle(
+        "completed"
+      );
+
       saveToLocalStorage();
     }
   });
