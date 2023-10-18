@@ -1,13 +1,17 @@
 export class Project {
-  constructor(title) {
-    this.id = `P${new Date().getTime()}`;
+  constructor(id, title, tasks) {
+    this.id = id;
     this.title = title;
-    this.tasks = [];
+    this.tasks = tasks;
   }
 
   addTask(task) {
     this.tasks.push(task);
-    console.log(`NEW TASK ADDED - ${this.title} -> ${task.title}`);
+  }
+
+  deleteTask(taskId) {
+    const remainingTasks = this.tasks.filter((task) => task.id !== taskId);
+    this.tasks = remainingTasks;
   }
 }
 
