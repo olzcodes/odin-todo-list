@@ -16,7 +16,7 @@ export const renderTaskCard = function (task) {
   taskCard.innerHTML = `
     <div class="task-header">
       <div class="task-header-left">
-        <button class="btn-complete-task">〇</button>
+        <button class="btn-task-status ${task.status}"></button>
         <input class="input-task-title" value="${task.title}" />
       </div>
       <div class="task-header-right">
