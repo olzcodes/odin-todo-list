@@ -195,7 +195,7 @@ button.btn-view-all-projects::after {
   display: none;
 }
 
-.task-card:active .task-details.completed {
+.task-card:hover .task-details.completed {
   display: block;
 }
 
