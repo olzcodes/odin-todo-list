@@ -19,6 +19,29 @@ export const inputHandlerProjectTitle = function () {
   );
 };
 
+const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) {
+      task.status === "completed"
+        ? (task.status = "pending")
+        : (task.status = "completed");
+      button.classList.toggle("completed");
+      button.classList.toggle("pending");
+      saveToLocalStorage();
+    }
+  });
+};
+
+export const clickHandlerBtnTaskStatus = function (targetProject) {
+  const btnTaskPendingNL = document.querySelectorAll(".btn-task-status");
+  btnTaskPendingNL.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      autoSaveTaskStatusChanges(targetProject, taskId, button);
+    });
+  });
+};
+
 const autoSaveTaskTitleChanges = function (targetProject, taskId, taskTitle) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) task.title = taskTitle.value;
