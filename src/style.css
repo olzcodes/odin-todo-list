@@ -342,6 +342,10 @@ textarea.input-task-description {
   padding: 10px 15px 10px;
 }
 
+textarea.input-task-description.completed {
+  color: gray;
+}
+
 .project-details > .task-bottom-row,
 .task-details > .task-bottom-row {
   display: flex;
