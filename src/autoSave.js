@@ -76,11 +76,26 @@ export const inputHandlerTaskTitle = function (targetProject) {
 const autoSaveTaskDescriptionChanges = function (
   targetProject,
   taskId,
-  taskDescription
+  taskDescriptionEl
 ) {
   targetProject.tasks.forEach((task) => {
-    if (task.id === taskId) task.description = taskDescription.value;
+    if (task.id === taskId) task.description = taskDescriptionEl.value;
     saveToLocalStorage();
+  });
+};
+
+const autoAdjustHeight = function (taskDescriptionEl) {
+  taskDescriptionEl.addEventListener("blur", () => {
+    taskDescriptionEl.style.height = "";
+    taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
+  });
+
+  taskDescriptionEl.focus();
+  taskDescriptionEl.blur();
+
+  taskDescriptionEl.addEventListener("input", (e) => {
+    taskDescriptionEl.style.height = "";
+    taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
   });
 };
 
@@ -91,12 +106,14 @@ export const inputHandlerTaskDescription = function (targetProject) {
 
   if (!taskDescriptionsNL) return;
 
-  taskDescriptionsNL.forEach((description) =>
-    description.addEventListener("input", (e) => {
+  taskDescriptionsNL.forEach((taskDescriptionEl) => {
+    autoAdjustHeight(taskDescriptionEl);
+
+    taskDescriptionEl.addEventListener("input", (e) => {
       const taskId = e.target.closest(".task-card").dataset.taskId;
-      autoSaveTaskDescriptionChanges(targetProject, taskId, description);
-    })
-  );
+      autoSaveTaskDescriptionChanges(targetProject, taskId, taskDescriptionEl);
+    });
+  });
 };
 
 const autoSaveTaskDueDateChanges = function (
