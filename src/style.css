@@ -211,11 +211,17 @@ button.btn-view-all-projects::after {
 }
 
 .task-details.completed {
-  display: none;
+  /* display: none; */
+  transition: opacity 1.5s ease;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .task-card:hover .task-details.completed {
-  display: block;
+  /* display: block; */
+  opacity: 1;
+  height: auto;
 }
 
 input.input-task-title.completed {
