@@ -80,7 +80,7 @@ const deleteProject = function (e) {
 };
 
 const createNewTask = function () {
-  targetProject.addTask(new Task("", "", "", "pending", "medium"));
+  targetProject.addTask(new Task("", "", "", "pending", "medium", "enabled"));
   saveToLocalStorage();
   clearItemContainer();
   loadTasksView(targetProject);
