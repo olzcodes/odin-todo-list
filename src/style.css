@@ -211,7 +211,6 @@ button.btn-view-all-projects::after {
 }
 
 .task-details.completed {
-  /* display: none; */
   transition: opacity 1.5s ease;
   opacity: 0;
   height: 0;
@@ -219,7 +218,6 @@ button.btn-view-all-projects::after {
 }
 
 .task-card:hover .task-details.completed {
-  /* display: block; */
   opacity: 1;
   height: auto;
 }
