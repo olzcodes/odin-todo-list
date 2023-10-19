@@ -19,6 +19,28 @@ export const inputHandlerProjectTitle = function () {
   );
 };
 
+const toggleTaskElementsOnStatusChange = function (button) {
+  button.classList.toggle("completed");
+  button.classList.toggle("pending");
+
+  const taskCardEl = button.parentElement.parentElement.parentElement;
+  const taskHeaderEl = taskCardEl.querySelector(".task-header");
+  const taskTitleInputEl = taskCardEl.querySelector(".input-task-title");
+  const taskDetailsEl = taskCardEl.querySelector(".task-details");
+  const taskDescriptionEl = taskCardEl.querySelector(".input-task-description");
+  const taskDueDateEl = taskCardEl.querySelector(".input-task-due-date");
+
+  taskCardEl.classList.toggle("completed");
+  taskHeaderEl.classList.toggle("completed");
+  taskTitleInputEl.classList.toggle("completed");
+  taskDetailsEl.classList.toggle("completed");
+  taskDescriptionEl.classList.toggle("completed");
+
+  taskTitleInputEl.disabled = !taskTitleInputEl.disabled;
+  taskDescriptionEl.disabled = !taskDescriptionEl.disabled;
+  taskDueDateEl.disabled = !taskDueDateEl.disabled;
+};
+
 const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) {
@@ -26,17 +48,13 @@ const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
         ? (task.status = "completed")
         : (task.status = "pending");
 
+      task.inputStatus === "enabled"
+        ? (task.inputStatus = "disabled")
+        : (task.inputStatus = "enabled");
+
       button.blur();
-      button.classList.toggle("completed");
-      button.classList.toggle("pending");
-      button.nextElementSibling.classList.toggle("completed");
-      button.parentElement.parentElement.classList.toggle("completed");
-      button.parentElement.parentElement.nextElementSibling.classList.toggle(
-        "completed"
-      );
-      button.parentElement.parentElement.parentElement.classList.toggle(
-        "completed"
-      );
+
+      toggleTaskElementsOnStatusChange(button);
 
       saveToLocalStorage();
     }
