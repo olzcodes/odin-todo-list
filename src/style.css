@@ -205,8 +205,7 @@ button.btn-view-all-projects::after {
   color: var(--main-color);
 }
 
-.task-header.completed,
-.task-header.completed:focus-within {
+.task-header.completed {
   background-color: var(--inactive-color);
 }
 
@@ -217,9 +216,16 @@ button.btn-view-all-projects::after {
   overflow: hidden;
 }
 
-.task-card:hover .task-details.completed {
+.task-details.pending,
+.task-details.completed.visible {
+  transition: opacity 1.5s ease;
   opacity: 1;
   height: auto;
+}
+
+/* This rule is required for click events on disabled input elements to propagate upwards on some browsers */
+input[disabled] {
+  pointer-events: none;
 }
 
 input.input-task-title.completed {
