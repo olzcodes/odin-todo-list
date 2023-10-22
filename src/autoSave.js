@@ -31,10 +31,16 @@ const toggleTaskElementsOnStatusChange = function (button) {
   const taskDueDateEl = taskCardEl.querySelector(".input-task-due-date");
 
   taskCardEl.classList.toggle("completed");
+  taskCardEl.classList.toggle("pending");
   taskHeaderEl.classList.toggle("completed");
+  taskHeaderEl.classList.toggle("pending");
   taskTitleInputEl.classList.toggle("completed");
+  taskTitleInputEl.classList.toggle("pending");
   taskDetailsEl.classList.toggle("completed");
+  taskDetailsEl.classList.toggle("pending");
+  taskDetailsEl.classList.remove("visible");
   taskDescriptionEl.classList.toggle("completed");
+  taskDescriptionEl.classList.toggle("pending");
 
   taskTitleInputEl.disabled = !taskTitleInputEl.disabled;
   taskDescriptionEl.disabled = !taskDescriptionEl.disabled;
@@ -67,6 +73,7 @@ export const clickHandlerBtnTaskStatus = function (targetProject) {
     button.addEventListener("click", (e) => {
       const taskId = e.target.closest(".task-card").dataset.taskId;
       autoSaveTaskStatusChanges(targetProject, taskId, button);
+      e.stopPropagation();
     });
   });
 };
@@ -156,4 +163,18 @@ export const inputHandlerTaskDueDate = function (targetProject) {
       autoSaveTaskDueDateChanges(targetProject, taskId, dueDate);
     })
   );
+};
+
+const toggleTaskDetails = function (taskCard) {
+  const taskDetailsEl = taskCard.querySelector(".task-details");
+  taskDetailsEl.classList.toggle("visible");
+};
+
+export const clickHandlerCompletedTaskCard = function () {
+  const completedTaskCardNL = document.querySelectorAll(".task-card");
+  completedTaskCardNL.forEach((taskCard) => {
+    taskCard.addEventListener("click", () => {
+      toggleTaskDetails(taskCard);
+    });
+  });
 };
