@@ -175,6 +175,7 @@ button.btn-view-all-projects::after {
 
 .item-container {
   width: 100%;
+  padding-bottom: 80px;
 }
 
 .project-card,
