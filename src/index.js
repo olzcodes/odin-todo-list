@@ -17,6 +17,10 @@ const clearItemContainer = function () {
   itemContainer.innerHTML = "";
 };
 
+const showTopOfPage = function () {
+  window.scrollTo(0, 0);
+};
+
 const loadProjectsView = function () {
   view = "projects";
   renderBreadcrumbNav("projectsView");
@@ -45,6 +49,7 @@ const loadTasksView = function (targetProject) {
   clickHandlerBtnDeleteTask();
   inputHandlerTaskDescription(targetProject);
   inputHandlerTaskDueDate(targetProject);
+  showTopOfPage();
 };
 
 const renderTasks = function (targetProjectTasks) {
