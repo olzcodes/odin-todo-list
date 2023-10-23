@@ -29,6 +29,7 @@
   --active-color: tomato;
   --active-color-two: white;
   --inactive-color: silver;
+  --default-thickness: 2px;
 }
 
 html {
@@ -80,7 +81,7 @@ header {
   justify-content: space-between;
 
   background-color: var(--background-color-two);
-  border-bottom: 1px solid var(--accent-color-two);
+  border-bottom: var(--default-thickness) solid var(--accent-color-two);
 }
 
 .header-top-row {
@@ -182,8 +183,8 @@ button.btn-view-all-projects::after {
 .task-card {
   cursor: pointer;
   flex: 1;
-  border: 1px solid var(--accent-color-three);
-  border-radius: 10px;
+  border: var(--default-thickness) solid var(--accent-color-three);
+  border-radius: 12px;
   margin: 0px 0px 20px;
 }
 
@@ -234,7 +235,7 @@ input.input-task-title.completed {
 }
 
 .task-card.completed {
-  border: 1px solid var(--inactive-color);
+  border: var(--default-thickness) solid var(--inactive-color);
 }
 
 button.btn-save-project,
@@ -366,7 +367,7 @@ textarea.input-task-description.completed {
 
 .input-task-due-date {
   background-color: var(--background-color-two);
-  border: 1px solid var(--accent-color-three);
+  border: 2px solid var(--accent-color-three);
   border-radius: 5px;
   outline: none;
   padding: 2px;
