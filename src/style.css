@@ -364,6 +364,14 @@ textarea.input-task-description.completed {
   font-weight: 700;
 }
 
+.input-task-due-date {
+  background-color: var(--background-color-two);
+  border: 1px solid var(--accent-color-three);
+  border-radius: 5px;
+  outline: none;
+  padding: 2px;
+}
+
 button.btn-task-options {
   cursor: pointer;
   font-size: large;
