@@ -10,9 +10,13 @@ export const loadFromLocalStorage = function () {
   const storedProjectsJSON =
     JSON.parse(localStorage.getItem("projects")) || demoProjects;
 
-  let projectObjects = {};
+  let projectsWithFunctions = {};
   for (const [key, value] of Object.entries(storedProjectsJSON)) {
-    projectObjects[key] = new Project(value.id, value.title, value.tasks);
+    projectsWithFunctions[key] = new Project(
+      value.id,
+      value.title,
+      value.tasks
+    );
   }
-  return projectObjects;
+  return projectsWithFunctions;
 };
