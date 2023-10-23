@@ -125,7 +125,9 @@ nav.top-nav button:hover {
 }
 
 nav.breadcrumb-nav {
-  font-size: medium;
+  display: flex;
+  align-items: center;
+  font-size: larger;
   padding: 5px 10px 0px;
   margin: 0px 0px 10px;
 }
@@ -134,9 +136,44 @@ span {
   padding: 0px 5px 0px;
 }
 
-span.accent {
+span.all-projects {
   color: var(--accent-color);
-  padding: 1px 6px 1px;
+  border: 2px solid var(--background-color-two);
+  font-size: medium;
+  letter-spacing: 0.23px;
+  padding: 3px 6px 3px;
+}
+
+span.current-project {
+  color: var(--main-color);
+  font-size: large;
+  padding: 3px 6px 3px;
+}
+
+button.btn-view-all-projects {
+  background-color: var(--background-color-two);
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color-three);
+  border-radius: 5px;
+  font-family: "Quicksand";
+  font-size: medium;
+  letter-spacing: 0.23px;
+  /* text-decoration: underline; */
+  color: var(--accent-color);
+  padding: 3px 6px 3px;
+}
+
+button.btn-view-all-projects:hover {
+  color: var(--active-color);
+  border: 2px solid var(--active-color);
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+
+button.btn-view-all-projects::after {
+  height: 0;
+  visibility: hidden;
+  font-weight: 700;
 }
 
 main {
@@ -150,28 +187,6 @@ main {
   align-items: start;
   padding: 15px;
   padding-top: 110px;
-}
-
-button.btn-view-all-projects {
-  background-color: var(--background-color-two);
-  color: var(--accent-color);
-  border: none;
-  font-family: "Quicksand";
-  font-size: medium;
-  text-decoration: underline;
-  letter-spacing: 0.23px;
-}
-
-button.btn-view-all-projects:hover {
-  color: var(--active-color);
-  font-weight: 700;
-  letter-spacing: 0px;
-}
-
-button.btn-view-all-projects::after {
-  height: 0;
-  visibility: hidden;
-  font-weight: 700;
 }
 
 .item-container {
