@@ -380,7 +380,7 @@ textarea.input-task-description.completed {
   font-weight: 700;
 }
 
-.input-task-due-date {
+input.input-task-due-date {
   background-color: var(--background-color-two);
   border: 2px solid var(--accent-color-three);
   border-radius: 5px;
