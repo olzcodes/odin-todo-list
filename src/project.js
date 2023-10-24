@@ -30,7 +30,9 @@ export const renderProjectCard = function (project) {
   projectCard.innerHTML = `
   <div class="project-header">
     <div class="project-header-left">
-      <input class="input-project-title" value="${project.title}" />
+      <input class="input-project-title" value="${
+        project.title
+      }" maxlength="28"/>
     </div>
     <div class="project-header-right">
       <button class="btn-project-move-down">ᐯ</button>
