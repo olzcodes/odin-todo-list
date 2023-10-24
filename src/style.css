@@ -388,6 +388,11 @@ textarea.input-task-description.completed {
   padding: 2px;
 }
 
+input[disabled].input-task-due-date {
+  background-color: var(--background-color);
+  border: 2px solid var(--inactive-color);
+}
+
 button.btn-task-options {
   cursor: pointer;
   font-size: large;
