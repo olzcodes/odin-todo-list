@@ -10,7 +10,12 @@ export let projects = loadFromLocalStorage() || demoProjects;
 
 let view = "projects";
 let targetProject;
+const btnSortByDueDate = document.querySelector(".btn-due-date");
+const btnSortByPriority = document.querySelector(".btn-priority");
 const itemContainer = document.querySelector(".item-container");
+const btnBackToAllProjects = document.querySelector(
+  ".btn-back-to-all-projects"
+);
 const btnNewItem = document.querySelector(".btn-new-item");
 
 const clearItemContainer = function () {
@@ -26,6 +31,7 @@ const loadProjectsView = function () {
   renderBreadcrumbNav("projectsView");
   clearItemContainer();
   renderAllProjects(projects);
+  hideTaskViewButtons();
   inputHandlerProjectTitle();
   clickHandlerDivProjectDetails();
   clickHandlerBtnDeleteProject();
@@ -42,7 +48,9 @@ const loadTasksView = function (targetProject) {
   renderBreadcrumbNav("tasksView", targetProject);
   clearItemContainer();
   renderTasks(targetProject.tasks);
+  showTaskViewButtons();
   clickHandlerBtnViewAllProjects();
+  clickHandlerBtnBackToAllProjects();
   clickHandlerCompletedTaskCard();
   clickHandlerBtnTaskStatus(targetProject);
   inputHandlerTaskTitle(targetProject);
@@ -56,6 +64,18 @@ const renderTasks = function (targetProjectTasks) {
   for (let [key, value] of Object.entries(targetProjectTasks)) {
     itemContainer.prepend(renderTaskCard(value));
   }
+};
+
+const showTaskViewButtons = function () {
+  btnSortByDueDate.classList.remove("hidden");
+  btnSortByPriority.classList.remove("hidden");
+  btnBackToAllProjects.classList.remove("hidden");
+};
+
+const hideTaskViewButtons = function () {
+  btnSortByDueDate.classList.add("hidden");
+  btnSortByPriority.classList.add("hidden");
+  btnBackToAllProjects.classList.add("hidden");
 };
 
 const createNewProject = function () {
@@ -121,6 +141,12 @@ const clickHandlerDivProjectDetails = function () {
 const clickHandlerBtnViewAllProjects = function () {
   const btnViewAllProjects = document.querySelector(".btn-view-all-projects");
   btnViewAllProjects.addEventListener("click", () => {
+    loadProjectsView();
+  });
+};
+
+const clickHandlerBtnBackToAllProjects = function () {
+  btnBackToAllProjects.addEventListener("click", () => {
     loadProjectsView();
   });
 };
