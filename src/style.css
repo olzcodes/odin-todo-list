@@ -85,6 +85,7 @@ header {
 }
 
 .header-top-row {
+  height: 56px;
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -406,7 +407,23 @@ button.btn-task-options {
   font-weight: 700;
 }
 
+button.btn-back-to-all-projects {
+  height: 42px;
+  width: 42px;
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  font-size: xx-large;
+  border: 2px solid var(--accent-color-two);
+  border-radius: 50px;
+  background-color: var(--accent-color);
+  color: var(--accent-color-two);
+  padding: 2px 2px 0px 0px;
+}
+
 button.btn-new-item {
+  height: 42px;
+  width: 42px;
   position: fixed;
   bottom: 50px;
   right: 20px;
