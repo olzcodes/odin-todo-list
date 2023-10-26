@@ -1,28 +1,13 @@
-import { renderBreadcrumbNav } from "./nav";
-import { Project, renderProjectCard } from "./project";
-import { Task, renderTaskCard } from "./task";
+import { Project } from "./project";
+import { Task } from "./task";
+import { renderBreadcrumbNav, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, clearItemContainer, showTopOfPage } from "./view"; // prettier-ignore
 import { inputHandlerProjectTitle, clickHandlerBtnTaskStatus, inputHandlerTaskTitle, inputHandlerTaskDescription, inputHandlerTaskDueDate, clickHandlerCompletedTaskCard } from "./autoSave"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
-import "./style.css";
 
-export let projects = loadFromLocalStorage() || demoProjects;
-
-let view;
+let projects = loadFromLocalStorage() || demoProjects;
 let targetProject;
-const btnSortByDueDate = document.querySelector(".btn-due-date");
-const btnSortByPriority = document.querySelector(".btn-priority");
-const itemContainer = document.querySelector(".item-container");
-const btnBackToAllProjects = document.querySelector(".btn-back-to-all-projects"); // prettier-ignore
-const btnNewItem = document.querySelector(".btn-new-item");
-
-const clearItemContainer = function () {
-  itemContainer.innerHTML = "";
-};
-
-const showTopOfPage = function () {
-  window.scrollTo(0, 0);
-};
+let view;
 
 const loadProjectsView = function () {
   view = "projects";
@@ -33,12 +18,6 @@ const loadProjectsView = function () {
   inputHandlerProjectTitle();
   clickHandlerDivProjectDetails();
   clickHandlerBtnDeleteProject();
-};
-
-const renderAllProjects = function (projects) {
-  for (let [key, value] of Object.entries(projects)) {
-    itemContainer.prepend(renderProjectCard(value));
-  }
 };
 
 const loadTasksView = function (targetProject) {
@@ -56,24 +35,6 @@ const loadTasksView = function (targetProject) {
   inputHandlerTaskDescription(targetProject);
   inputHandlerTaskDueDate(targetProject);
   showTopOfPage();
-};
-
-const renderTasks = function (targetProjectTasks) {
-  for (let [key, value] of Object.entries(targetProjectTasks)) {
-    itemContainer.prepend(renderTaskCard(value));
-  }
-};
-
-const showTaskViewButtons = function () {
-  btnSortByDueDate.classList.remove("hidden");
-  btnSortByPriority.classList.remove("hidden");
-  btnBackToAllProjects.classList.remove("hidden");
-};
-
-const hideTaskViewButtons = function () {
-  btnSortByDueDate.classList.add("hidden");
-  btnSortByPriority.classList.add("hidden");
-  btnBackToAllProjects.classList.add("hidden");
 };
 
 const createNewProject = function () {
@@ -144,12 +105,14 @@ const clickHandlerBtnViewAllProjects = function () {
 };
 
 const clickHandlerBtnBackToAllProjects = function () {
+  const btnBackToAllProjects = document.querySelector(".btn-back-to-all-projects"); // prettier-ignore
   btnBackToAllProjects.addEventListener("click", () => {
     loadProjectsView();
   });
 };
 
 const clickHandlerBtnNewItem = function () {
+  const btnNewItem = document.querySelector(".btn-new-item");
   btnNewItem.addEventListener("click", () => {
     if (view === "projects") createNewProject();
     if (view === "tasks") createNewTask();
@@ -173,7 +136,9 @@ const clickHandlerBtnDeleteTask = function () {
 };
 
 // Initialize app
-(function () {
+const initApp = function () {
   loadProjectsView();
   clickHandlerBtnNewItem();
-})();
+};
+
+export { projects, initApp };
