@@ -1,7 +1,7 @@
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
 
-export const renderBreadcrumbNav = function (mode, currentProject) {
-  if (mode === "projectsView") {
+export const renderBreadcrumbNav = function (view, currentProject) {
+  if (view === "projects") {
     breadcrumbNav.forEach((element) => (element.innerHTML = ``));
     breadcrumbNav.forEach(
       (element) =>
@@ -12,7 +12,7 @@ export const renderBreadcrumbNav = function (mode, currentProject) {
     );
   }
 
-  if (mode === "tasksView") {
+  if (view === "tasks") {
     breadcrumbNav.forEach((element) => (element.innerHTML = ``));
     breadcrumbNav.forEach(
       (element) =>
