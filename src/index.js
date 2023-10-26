@@ -8,14 +8,12 @@ import "./style.css";
 
 export let projects = loadFromLocalStorage() || demoProjects;
 
-let view = "projects";
+let view;
 let targetProject;
 const btnSortByDueDate = document.querySelector(".btn-due-date");
 const btnSortByPriority = document.querySelector(".btn-priority");
 const itemContainer = document.querySelector(".item-container");
-const btnBackToAllProjects = document.querySelector(
-  ".btn-back-to-all-projects"
-);
+const btnBackToAllProjects = document.querySelector(".btn-back-to-all-projects"); // prettier-ignore
 const btnNewItem = document.querySelector(".btn-new-item");
 
 const clearItemContainer = function () {
@@ -28,7 +26,7 @@ const showTopOfPage = function () {
 
 const loadProjectsView = function () {
   view = "projects";
-  renderBreadcrumbNav("projectsView");
+  renderBreadcrumbNav(view);
   clearItemContainer();
   renderAllProjects(projects);
   hideTaskViewButtons();
@@ -45,7 +43,7 @@ const renderAllProjects = function (projects) {
 
 const loadTasksView = function (targetProject) {
   view = "tasks";
-  renderBreadcrumbNav("tasksView", targetProject);
+  renderBreadcrumbNav(view, targetProject);
   clearItemContainer();
   renderTasks(targetProject.tasks);
   showTaskViewButtons();
