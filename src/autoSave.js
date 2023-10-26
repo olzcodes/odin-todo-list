@@ -1,4 +1,4 @@
-import { projects } from "./index";
+import { projects } from "./controller";
 import { saveToLocalStorage } from "./localStorage";
 
 const autoSaveProjectTitleChanges = function (projectId, title) {
@@ -6,7 +6,7 @@ const autoSaveProjectTitleChanges = function (projectId, title) {
   saveToLocalStorage();
 };
 
-export const inputHandlerProjectTitle = function () {
+const inputHandlerProjectTitle = function () {
   const projectTitlesNL = document.querySelectorAll(".input-project-title");
 
   if (!projectTitlesNL) return;
@@ -67,7 +67,7 @@ const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
   });
 };
 
-export const clickHandlerBtnTaskStatus = function (targetProject) {
+const clickHandlerBtnTaskStatus = function (targetProject) {
   const btnTaskPendingNL = document.querySelectorAll(".btn-task-status");
   btnTaskPendingNL.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -85,7 +85,7 @@ const autoSaveTaskTitleChanges = function (targetProject, taskId, taskTitle) {
   });
 };
 
-export const inputHandlerTaskTitle = function (targetProject) {
+const inputHandlerTaskTitle = function (targetProject) {
   const taskTitlesNL = document.querySelectorAll(".input-task-title");
 
   if (!taskTitlesNL) return;
@@ -124,7 +124,7 @@ const autoAdjustHeight = function (taskDescriptionEl) {
   });
 };
 
-export const inputHandlerTaskDescription = function (targetProject) {
+const inputHandlerTaskDescription = function (targetProject) {
   const taskDescriptionsNL = document.querySelectorAll(
     ".input-task-description"
   );
@@ -152,7 +152,7 @@ const autoSaveTaskDueDateChanges = function (
   });
 };
 
-export const inputHandlerTaskDueDate = function (targetProject) {
+const inputHandlerTaskDueDate = function (targetProject) {
   const taskDueDateNL = document.querySelectorAll(".input-task-due-date");
 
   if (!taskDueDateNL) return;
@@ -170,11 +170,20 @@ const toggleTaskDetails = function (taskCard) {
   taskDetailsEl.classList.toggle("visible");
 };
 
-export const clickHandlerCompletedTaskCard = function () {
+const clickHandlerCompletedTaskCard = function () {
   const completedTaskCardNL = document.querySelectorAll(".task-card");
   completedTaskCardNL.forEach((taskCard) => {
     taskCard.addEventListener("click", () => {
       toggleTaskDetails(taskCard);
     });
   });
+};
+
+export {
+  inputHandlerProjectTitle,
+  clickHandlerBtnTaskStatus,
+  inputHandlerTaskTitle,
+  inputHandlerTaskDescription,
+  inputHandlerTaskDueDate,
+  clickHandlerCompletedTaskCard,
 };
