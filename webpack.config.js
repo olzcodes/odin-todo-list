@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   mode: "none",
-  entry: "./src/index.js",
+  entry: "./src/app.js",
   devtool: "inline-source-map",
   output: {
     filename: "main.js",
