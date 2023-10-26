@@ -1,4 +1,4 @@
-import { projects } from "./index";
+import { projects } from "./controller";
 import { Project } from "./project";
 import { demoProjects } from "./demoData";
 
