@@ -1,7 +1,6 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { renderBreadcrumbNav, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, clearItemContainer, showTopOfPage } from "./view"; // prettier-ignore
-import { inputHandlerProjectTitle, clickHandlerBtnTaskStatus, inputHandlerTaskTitle, inputHandlerTaskDescription, inputHandlerTaskDueDate, clickHandlerCompletedTaskCard } from "./autoSave"; // prettier-ignore
+import { renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, showTopOfPage, autoAdjustHeight,clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 
@@ -86,6 +85,58 @@ const deleteTask = function (e) {
   loadTasksView(targetProject);
 };
 
+// Save functions triggered by inputs/edits
+
+const autoSaveProjectTitleChanges = function (projectId, title) {
+  projects[projectId].title = title.value;
+  saveToLocalStorage();
+};
+
+const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) {
+      task.status === "pending"
+        ? (task.status = "completed")
+        : (task.status = "pending");
+
+      task.inputStatus === "enabled"
+        ? (task.inputStatus = "disabled")
+        : (task.inputStatus = "enabled");
+
+      button.blur();
+
+      toggleTaskElementsOnStatusChange(button);
+
+      saveToLocalStorage();
+    }
+  });
+};
+
+const autoSaveTaskTitleChanges = function (targetProject, taskId, taskTitle) {
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) task.title = taskTitle.value;
+    saveToLocalStorage();
+  });
+};
+
+// prettier-ignore
+const autoSaveTaskDescriptionChanges = function ( targetProject, taskId, taskDescriptionEl) {
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) task.description = taskDescriptionEl.value;
+    saveToLocalStorage();
+  });
+};
+
+// prettier-ignore
+const autoSaveTaskDueDateChanges = function (targetProject, taskId, taskDueDate) {
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) task.dueDate = taskDueDate.value;
+    saveToLocalStorage();
+  });
+};
+
+// Event handlers - Navigation
+
 const clickHandlerDivProjectDetails = function () {
   const projectDetailsNL = document.querySelectorAll(".project-details");
   projectDetailsNL.forEach((projectDetail) => {
@@ -111,6 +162,8 @@ const clickHandlerBtnBackToAllProjects = function () {
   });
 };
 
+// Event handlers - Create and delete items
+
 const clickHandlerBtnNewItem = function () {
   const btnNewItem = document.querySelector(".btn-new-item");
   btnNewItem.addEventListener("click", () => {
@@ -132,6 +185,75 @@ const clickHandlerBtnDeleteTask = function () {
   const deleteTaskButtonsNL = document.querySelectorAll(".btn-task-delete");
   deleteTaskButtonsNL.forEach((button) =>
     button.addEventListener("click", deleteTask.bind(this))
+  );
+};
+
+// Event handlers - Inputs/edits made to projects and tasks
+
+const inputHandlerProjectTitle = function () {
+  const projectTitlesNL = document.querySelectorAll(".input-project-title");
+
+  if (!projectTitlesNL) return;
+
+  projectTitlesNL.forEach((title) =>
+    title.addEventListener("input", (e) => {
+      const projectId = e.target.closest(".project-card").dataset.projectId;
+      autoSaveProjectTitleChanges(projectId, title);
+    })
+  );
+};
+
+const clickHandlerBtnTaskStatus = function (targetProject) {
+  const btnTaskPendingNL = document.querySelectorAll(".btn-task-status");
+  btnTaskPendingNL.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      autoSaveTaskStatusChanges(targetProject, taskId, button);
+      e.stopPropagation();
+    });
+  });
+};
+
+const inputHandlerTaskTitle = function (targetProject) {
+  const taskTitlesNL = document.querySelectorAll(".input-task-title");
+
+  if (!taskTitlesNL) return;
+
+  taskTitlesNL.forEach((title) =>
+    title.addEventListener("input", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      autoSaveTaskTitleChanges(targetProject, taskId, title);
+    })
+  );
+};
+
+const inputHandlerTaskDescription = function (targetProject) {
+  const taskDescriptionsNL = document.querySelectorAll(
+    ".input-task-description"
+  );
+
+  if (!taskDescriptionsNL) return;
+
+  taskDescriptionsNL.forEach((taskDescriptionEl) => {
+    autoAdjustHeight(taskDescriptionEl);
+
+    taskDescriptionEl.addEventListener("input", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      autoSaveTaskDescriptionChanges(targetProject, taskId, taskDescriptionEl);
+    });
+  });
+};
+
+const inputHandlerTaskDueDate = function (targetProject) {
+  const taskDueDateNL = document.querySelectorAll(".input-task-due-date");
+
+  if (!taskDueDateNL) return;
+
+  taskDueDateNL.forEach((dueDate) =>
+    dueDate.addEventListener("input", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      autoSaveTaskDueDateChanges(targetProject, taskId, dueDate);
+    })
   );
 };
 

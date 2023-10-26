@@ -29,6 +29,10 @@ const renderBreadcrumbNav = function (view, currentProject) {
   }
 };
 
+const clearItemContainer = function () {
+  itemContainer.innerHTML = "";
+};
+
 const renderProjectCard = function (project) {
   const renderProjectDetails = function (project) {
     let taskCount = 0;
@@ -116,20 +120,76 @@ const hideTaskViewButtons = function () {
   btnBackToAllProjects.classList.add("hidden");
 };
 
-const clearItemContainer = function () {
-  itemContainer.innerHTML = "";
-};
-
 const showTopOfPage = function () {
   window.scrollTo(0, 0);
 };
 
+const autoAdjustHeight = function (taskDescriptionEl) {
+  taskDescriptionEl.addEventListener("blur", () => {
+    taskDescriptionEl.style.height = "";
+    taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
+  });
+
+  taskDescriptionEl.focus();
+  taskDescriptionEl.blur();
+
+  taskDescriptionEl.addEventListener("input", (e) => {
+    taskDescriptionEl.style.height = "";
+    taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
+  });
+};
+
+const toggleTaskDetails = function (taskCard) {
+  const taskDetailsEl = taskCard.querySelector(".task-details");
+  taskDetailsEl.classList.toggle("visible");
+};
+
+const toggleTaskElementsOnStatusChange = function (button) {
+  button.classList.toggle("completed");
+  button.classList.toggle("pending");
+
+  const taskCardEl = button.parentElement.parentElement.parentElement;
+  const taskHeaderEl = taskCardEl.querySelector(".task-header");
+  const taskTitleInputEl = taskCardEl.querySelector(".input-task-title");
+  const taskDetailsEl = taskCardEl.querySelector(".task-details");
+  const taskDescriptionEl = taskCardEl.querySelector(".input-task-description");
+  const taskDueDateEl = taskCardEl.querySelector(".input-task-due-date");
+
+  taskCardEl.classList.toggle("completed");
+  taskCardEl.classList.toggle("pending");
+  taskHeaderEl.classList.toggle("completed");
+  taskHeaderEl.classList.toggle("pending");
+  taskTitleInputEl.classList.toggle("completed");
+  taskTitleInputEl.classList.toggle("pending");
+  taskDetailsEl.classList.toggle("completed");
+  taskDetailsEl.classList.toggle("pending");
+  taskDetailsEl.classList.remove("visible");
+  taskDescriptionEl.classList.toggle("completed");
+  taskDescriptionEl.classList.toggle("pending");
+
+  taskTitleInputEl.disabled = !taskTitleInputEl.disabled;
+  taskDescriptionEl.disabled = !taskDescriptionEl.disabled;
+  taskDueDateEl.disabled = !taskDueDateEl.disabled;
+};
+
+const clickHandlerCompletedTaskCard = function () {
+  const completedTaskCardNL = document.querySelectorAll(".task-card");
+  completedTaskCardNL.forEach((taskCard) => {
+    taskCard.addEventListener("click", () => {
+      toggleTaskDetails(taskCard);
+    });
+  });
+};
+
 export {
   renderBreadcrumbNav,
+  clearItemContainer,
   renderAllProjects,
   renderTasks,
   showTaskViewButtons,
   hideTaskViewButtons,
-  clearItemContainer,
   showTopOfPage,
+  autoAdjustHeight,
+  toggleTaskElementsOnStatusChange,
+  clickHandlerCompletedTaskCard,
 };
