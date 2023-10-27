@@ -80,8 +80,6 @@ const renderTaskCard = function (task) {
         <input class="input-task-title ${task.status}" value="${task.title}"  ${task.inputStatus}/>
       </div>
       <div class="task-header-right">
-        <button class="btn-task-move-down">ᐯ</button>
-        <button class="btn-task-move-up">ᐱ</button>
         <button class="btn-task-delete">X</button>
       </div>
     </div>
@@ -89,7 +87,11 @@ const renderTaskCard = function (task) {
       <textarea class="input-task-description ${task.status}" name="task-description" ${task.inputStatus}>${task.description}</textarea>
       <div class="task-bottom-row">
         <input type="date" class="input-task-due-date" value="${task.dueDate}" ${task.inputStatus}/>
-        <button class="btn-task-options">...</button>
+        <div class="task-days-remaining">${task.daysRemaining}</div>
+        <div class="task-priority">
+          <span class="priority-label">${task.priority}</span>
+          <button class="btn-task-priority ${task.priority}"></button>
+        </div>
       </div>
     </div>
   `;
