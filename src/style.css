@@ -277,6 +277,7 @@ input.input-task-title {
   border: none;
   outline: none;
   margin-left: 5px;
+  margin-right: 20px;
 }
 
 input.input-project-title:focus,
@@ -300,11 +301,13 @@ button.btn-task-status {
 }
 
 button.btn-task-status.pending::after {
-  content: "〇";
+  content: "☐";
+  font-size: xx-large;
 }
 
 button.btn-task-status.completed::after {
-  content: "◉";
+  content: "☑";
+  font-size: xx-large;
 }
 
 .project-header:focus-within,
