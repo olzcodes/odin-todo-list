@@ -26,9 +26,11 @@
   --accent-color: salmon;
   --accent-color-two: white;
   --accent-color-three: lightpink;
+  --priority-high-color: palevioletred;
   --active-color: tomato;
   --active-color-two: white;
   --inactive-color: silver;
+  --inactive-color-two: gray;
   --default-thickness: 2px;
 }
 
@@ -328,8 +330,6 @@ button.btn-task-status.completed::after {
 
 button.btn-project-move-down,
 button.btn-project-move-up,
-button.btn-task-move-down,
-button.btn-task-move-up,
 button.btn-project-delete,
 button.btn-task-delete {
   background-color: var(--accent-three);
@@ -341,8 +341,6 @@ button.btn-task-delete {
 
 button.btn-project-move-down:hover,
 button.btn-project-move-up:hover,
-button.btn-task-move-down:hover,
-button.btn-task-move-up:hover,
 button.btn-project-delete:hover,
 button.btn-task-delete:hover {
   color: var(--main-color);
@@ -401,13 +399,44 @@ input[disabled].input-task-due-date {
   border: 2px solid var(--inactive-color);
 }
 
-button.btn-task-options {
-  cursor: pointer;
-  font-size: large;
+span.priority-label {
+  padding: 0px 5px 0px 0px;
+}
+
+button.btn-task-priority {
   background-color: var(--accent-three);
-  color: var(--main-color);
   border: none;
-  font-weight: 700;
+  margin: -8px;
+}
+
+button.btn-task-priority.low::after {
+  content: "⬤";
+  color: palegreen;
+  font-size: large;
+}
+
+button.btn-task-priority.medium::after {
+  content: "⬤";
+  color: gold;
+  font-size: large;
+}
+
+button.btn-task-priority.high::after {
+  content: "⬤";
+  color: coral;
+  font-size: large;
+}
+
+.priority-high {
+  background-color: var(--priority-high-color);
+}
+
+.task-days-remaining,
+.task-priority {
+  color: var(--inactive-color-two);
+  font-size: small;
+  font-weight: 500;
+  text-align: center;
 }
 
 button.btn-back-to-all-projects {
