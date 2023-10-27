@@ -175,7 +175,13 @@ const toggleTaskElementsOnStatusChange = function (button) {
 const clickHandlerCompletedTaskCard = function () {
   const completedTaskCardNL = document.querySelectorAll(".task-card");
   completedTaskCardNL.forEach((taskCard) => {
+    const taskDescriptionEl = taskCard.querySelector(".input-task-description");
     taskCard.addEventListener("click", () => {
+      if (taskCard.classList.contains("completed")) {
+        taskDescriptionEl.disabled = false;
+        autoAdjustHeight(taskDescriptionEl);
+        taskDescriptionEl.disabled = true;
+      }
       toggleTaskDetails(taskCard);
     });
   });
