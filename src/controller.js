@@ -1,6 +1,6 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, showTopOfPage, autoAdjustHeight,clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
+import { renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, showTopOfPage, autoAdjustHeight,toggleTaskElementsOnStatusChange, clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 
