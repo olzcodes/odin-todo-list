@@ -157,6 +157,7 @@ const toggleTaskElementsOnStatusChange = function (button) {
   const taskDetailsEl = taskCardEl.querySelector(".task-details");
   const taskDescriptionEl = taskCardEl.querySelector(".input-task-description");
   const taskDueDateEl = taskCardEl.querySelector(".input-task-due-date");
+  const taskPriorityEl = taskCardEl.querySelector(".btn-task-priority");
 
   taskCardEl.classList.toggle("completed");
   taskCardEl.classList.toggle("pending");
@@ -173,6 +174,7 @@ const toggleTaskElementsOnStatusChange = function (button) {
   taskTitleInputEl.disabled = !taskTitleInputEl.disabled;
   taskDescriptionEl.disabled = !taskDescriptionEl.disabled;
   taskDueDateEl.disabled = !taskDueDateEl.disabled;
+  taskPriorityEl.disabled = !taskPriorityEl.disabled;
 };
 
 const clickHandlerCompletedTaskCard = function () {
