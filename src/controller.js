@@ -131,11 +131,19 @@ const autoSaveTaskDescriptionChanges = function ( targetProject, taskId, taskDes
 };
 
 // prettier-ignore
-const autoSaveTaskDueDateChanges = function (targetProject, taskId, taskDueDate) {
+const autoSaveTaskDueDateChanges = function (targetProject, taskId, taskDueDateEl) {
   targetProject.tasks.forEach((task) => {
-    if (task.id === taskId) task.dueDate = taskDueDate.value;
+    if (task.id === taskId) task.dueDate = taskDueDateEl.value;
     saveToLocalStorage();
   });
+};
+
+// prettier-ignore
+const updateDaysRemaining = function (targetProject, taskId, e) {
+  const taskDaysRemainingEl = e.target.parentElement.querySelector(".task-days-remaining");
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) taskDaysRemainingEl.innerHTML = task.getDaysRemaining();
+  })
 };
 
 // Event handlers - Navigation
@@ -253,10 +261,11 @@ const inputHandlerTaskDueDate = function (targetProject) {
 
   if (!taskDueDateNL) return;
 
-  taskDueDateNL.forEach((dueDate) =>
-    dueDate.addEventListener("input", (e) => {
+  taskDueDateNL.forEach((taskDueDateEl) =>
+    taskDueDateEl.addEventListener("input", (e) => {
       const taskId = e.target.closest(".task-card").dataset.taskId;
-      autoSaveTaskDueDateChanges(targetProject, taskId, dueDate);
+      autoSaveTaskDueDateChanges(targetProject, taskId, taskDueDateEl);
+      updateDaysRemaining(targetProject, taskId, e);
     })
   );
 };
