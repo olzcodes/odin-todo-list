@@ -399,29 +399,47 @@ input[disabled].input-task-due-date {
   border: 2px solid var(--inactive-color);
 }
 
-span.priority-label {
-  padding: 0px 5px 0px 0px;
+.task-days-remaining,
+.btn-task-priority {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 5px;
+  min-width: 82px;
+  color: var(--inactive-color-two);
+  font-size: small;
+  font-weight: 500;
+  text-align: center;
+  padding: 0px;
 }
 
 button.btn-task-priority {
   background-color: var(--accent-three);
   border: none;
+}
+
+span.priority-label {
+  padding: 0px 5px 0px 0px;
+}
+
+span.priority-indicator {
+  background-color: var(--accent-three);
   margin: -8px;
 }
 
-button.btn-task-priority.low::after {
+span.priority-indicator.low::after {
   content: "⬤";
   color: mediumseagreen;
   font-size: large;
 }
 
-button.btn-task-priority.medium::after {
+span.priority-indicator.medium::after {
   content: "⬤";
   color: gold;
   font-size: large;
 }
 
-button.btn-task-priority.high::after {
+span.priority-indicator.high::after {
   content: "⬤";
   color: coral;
   font-size: large;
@@ -429,18 +447,6 @@ button.btn-task-priority.high::after {
 
 .priority-high {
   background-color: var(--priority-high-color);
-}
-
-.task-days-remaining,
-.task-priority {
-  display: flex;
-  justify-content: end;
-  gap: 5px;
-  min-width: 76px;
-  color: var(--inactive-color-two);
-  font-size: small;
-  font-weight: 500;
-  text-align: center;
 }
 
 button.btn-back-to-all-projects {
