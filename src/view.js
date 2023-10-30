@@ -68,6 +68,7 @@ const renderProjectCard = function (project) {
   return projectCard;
 };
 
+// prettier-ignore
 const renderTaskCard = function (task) {
   const taskCard = document.createElement("div");
   taskCard.className = "task-card";
@@ -77,7 +78,7 @@ const renderTaskCard = function (task) {
     <div class="task-header ${task.status}">
       <div class="task-header-left">
         <button class="btn-task-status ${task.status}"></button>
-        <input class="input-task-title ${task.status}" value="${task.title}"  ${task.inputStatus}/>
+        <input class="input-task-title ${task.status}" value="${task.title}" ${task.inputStatus}/>
       </div>
       <div class="task-header-right">
         <button class="btn-task-delete">X</button>
@@ -87,7 +88,7 @@ const renderTaskCard = function (task) {
       <textarea class="input-task-description ${task.status}" name="task-description" ${task.inputStatus}>${task.description}</textarea>
       <div class="task-bottom-row">
         <input type="date" class="input-task-due-date" value="${task.dueDate}" ${task.inputStatus}/>
-        <div class="task-days-remaining">${task.daysRemaining}</div>
+        <div class="task-days-remaining">${task.getDaysRemaining()}</div>
         <div class="task-priority">
           <span class="priority-label">${task.priority}</span>
           <button class="btn-task-priority ${task.priority}"></button>
