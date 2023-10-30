@@ -89,10 +89,10 @@ const renderTaskCard = function (task) {
       <div class="task-bottom-row">
         <input type="date" class="input-task-due-date" value="${task.dueDate}" ${task.inputStatus}/>
         <div class="task-days-remaining">${task.getDaysRemaining()}</div>
-        <div class="task-priority">
+        <button class="btn-task-priority" ${task.inputStatus}>
           <span class="priority-label">${task.priority}</span>
-          <button class="btn-task-priority ${task.priority}"></button>
-        </div>
+          <span class="priority-indicator ${task.priority}"></span>
+        </button>
       </div>
     </div>
   `;
