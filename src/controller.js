@@ -64,7 +64,10 @@ const deleteProject = function (e) {
 };
 
 const createNewTask = function () {
-  targetProject.addTask(new Task("", "", "", "pending", "medium", "enabled"));
+  let id = `T${new Date().getTime()}`;
+  targetProject.addTask(
+    new Task(id, "", "", "", "pending", "medium", "enabled")
+  );
   saveToLocalStorage();
   clearItemContainer();
   loadTasksView(targetProject);
@@ -208,6 +211,7 @@ const clickHandlerBtnTaskStatus = function (targetProject) {
   btnTaskPendingNL.forEach((button) => {
     button.addEventListener("click", (e) => {
       const taskId = e.target.closest(".task-card").dataset.taskId;
+      console.log(taskId);
       autoSaveTaskStatusChanges(targetProject, taskId, button);
       e.stopPropagation();
     });
