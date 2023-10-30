@@ -33,6 +33,7 @@ const loadTasksView = function (targetProject) {
   clickHandlerBtnDeleteTask();
   inputHandlerTaskDescription(targetProject);
   inputHandlerTaskDueDate(targetProject);
+  clickHandlerBtnTaskPriority(targetProject);
   showTopOfPage();
 };
 
@@ -146,6 +147,23 @@ const updateDaysRemaining = function (targetProject, taskId, e) {
   })
 };
 
+// prettier-ignore
+const toggleTaskPriorty = function (targetProject, taskId, button) {
+  const priorityLevelShifter = { low: "medium", medium: "high", high: "low" };
+  targetProject.tasks.forEach((task) => {
+    if (task.id === taskId) {
+      const currentLevel = task.priority;
+      const nextLevel = priorityLevelShifter[task.priority];
+      const priorityLabel = button.querySelector(".priority-label")
+      const priorityIndicator = button.querySelector(".priority-indicator")
+      priorityLabel.textContent = nextLevel;
+      priorityIndicator.classList.replace(currentLevel, nextLevel);
+      task.priority = nextLevel;
+    saveToLocalStorage()
+    }
+  });
+};
+
 // Event handlers - Navigation
 
 const clickHandlerDivProjectDetails = function () {
@@ -219,7 +237,6 @@ const clickHandlerBtnTaskStatus = function (targetProject) {
   btnTaskPendingNL.forEach((button) => {
     button.addEventListener("click", (e) => {
       const taskId = e.target.closest(".task-card").dataset.taskId;
-      console.log(taskId);
       autoSaveTaskStatusChanges(targetProject, taskId, button);
       e.stopPropagation();
     });
@@ -266,6 +283,16 @@ const inputHandlerTaskDueDate = function (targetProject) {
       const taskId = e.target.closest(".task-card").dataset.taskId;
       autoSaveTaskDueDateChanges(targetProject, taskId, taskDueDateEl);
       updateDaysRemaining(targetProject, taskId, e);
+    })
+  );
+};
+
+const clickHandlerBtnTaskPriority = function (targetProject) {
+  const btnTaskPriorityNL = document.querySelectorAll(".btn-task-priority");
+  btnTaskPriorityNL.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      toggleTaskPriorty(targetProject, taskId, button);
     })
   );
 };
