@@ -1,5 +1,5 @@
-const btnSortByDueDate = document.querySelector(".btn-due-date");
-const btnSortByPriority = document.querySelector(".btn-priority");
+const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
+const btnSortByPriority = document.querySelector(".btn-sort-priority");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
 const itemContainer = document.querySelector(".item-container");
 const btnBackToAllProjects = document.querySelector(".btn-back-to-all-projects"); // prettier-ignore
