@@ -19,12 +19,14 @@ const loadProjectsView = function () {
   clickHandlerBtnDeleteProject();
 };
 
-const loadTasksView = function (targetProject) {
+const loadTasksView = function (targetProject, sortCriteria) {
   view = "tasks";
   renderBreadcrumbNav(view, targetProject);
   clearItemContainer();
-  renderTasks(targetProject.tasks);
+  renderTasks(targetProject.tasks, sortCriteria);
   showTaskViewButtons();
+  clickHandlerBtnSortByDueDate(targetProject);
+  clickHandlerBtnSortByPriority(targetProject);
   clickHandlerBtnViewAllProjects();
   clickHandlerBtnBackToAllProjects();
   clickHandlerCompletedTaskCard();
@@ -164,6 +166,16 @@ const toggleTaskPriorty = function (targetProject, taskId, button) {
   });
 };
 
+const sortByDueDate = function (targetProject) {
+  console.log(targetProject, "sort by date");
+  loadTasksView(targetProject, "dueDate");
+};
+
+const sortByPriority = function (targetProject) {
+  console.log(targetProject, "sort by priority");
+  loadTasksView(targetProject, "priority");
+};
+
 // Event handlers - Navigation
 
 const clickHandlerDivProjectDetails = function () {
@@ -189,6 +201,20 @@ const clickHandlerBtnBackToAllProjects = function () {
   btnBackToAllProjects.addEventListener("click", () => {
     loadProjectsView();
   });
+};
+
+const clickHandlerBtnSortByDueDate = function (targetProject) {
+  const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
+  btnSortByDueDate.addEventListener("click", () =>
+    sortByDueDate(targetProject)
+  );
+};
+
+const clickHandlerBtnSortByPriority = function (targetProject) {
+  const btnSortByPriority = document.querySelector(".btn-sort-priority");
+  btnSortByPriority.addEventListener("click", () =>
+    sortByPriority(targetProject)
+  );
 };
 
 // Event handlers - Create and delete items
