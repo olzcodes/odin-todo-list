@@ -1,7 +1,3 @@
-import { compareAsc, parse } from "date-fns";
-import { parseISO } from "date-fns";
-import { is } from "date-fns/locale";
-
 const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
 const btnSortByPriority = document.querySelector(".btn-sort-priority");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
