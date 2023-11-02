@@ -1,3 +1,7 @@
+import { compareAsc, parse } from "date-fns";
+import { parseISO } from "date-fns";
+import { is } from "date-fns/locale";
+
 const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
 const btnSortByPriority = document.querySelector(".btn-sort-priority");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
@@ -105,9 +109,29 @@ const renderAllProjects = function (projects) {
     itemContainer.prepend(renderProjectCard(value));
   }
 };
-const renderTasks = function (targetProjectTasks) {
-  for (let [key, value] of Object.entries(targetProjectTasks)) {
-    itemContainer.prepend(renderTaskCard(value));
+const renderTasks = function (targetProjectTasks, sortCriteria) {
+  if (sortCriteria === "dueDate") {
+    const tasks = [...targetProjectTasks];
+    let isSorted = false;
+    while (!isSorted) {
+      isSorted = true;
+      for (let i = 0; i < tasks.length - 1; i++) {
+        const date1 = new Date(tasks[i].dueDate);
+        const date2 = new Date(tasks[i + 1].dueDate);
+        if (date1 > date2) {
+          let temp = tasks[i + 1];
+          tasks[i + 1] = tasks[i];
+          tasks[i] = temp;
+          isSorted = false;
+        }
+      }
+    }
+    tasks.forEach((task) => itemContainer.append(renderTaskCard(task)));
+  } else if (sortCriteria === "priority") {
+  } else {
+    for (let [key, value] of Object.entries(targetProjectTasks)) {
+      itemContainer.prepend(renderTaskCard(value));
+    }
   }
 };
 
