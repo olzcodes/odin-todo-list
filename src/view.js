@@ -74,6 +74,7 @@ const renderTaskCard = function (task) {
   taskCard.className = "task-card";
   taskCard.dataset.taskId = task.id;
   taskCard.classList.add(`${task.status}`);
+  taskCard.classList.add(`${task.priority}`);
   taskCard.innerHTML = `
     <div class="task-header ${task.status}">
       <div class="task-header-left">
