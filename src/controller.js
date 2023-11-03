@@ -158,8 +158,10 @@ const toggleTaskPriorty = function (targetProject, taskId, button) {
       const nextLevel = priorityLevelShifter[task.priority];
       const priorityLabel = button.querySelector(".priority-label")
       const priorityIndicator = button.querySelector(".priority-indicator")
+      const taskCard = button.closest(".task-card")
       priorityLabel.textContent = nextLevel;
       priorityIndicator.classList.replace(currentLevel, nextLevel);
+      taskCard.classList.replace(currentLevel, nextLevel);
       task.priority = nextLevel;
     saveToLocalStorage()
     }
