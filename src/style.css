@@ -217,9 +217,6 @@ main {
   justify-content: space-between;
   align-items: center;
   background-color: var(--accent-color-three);
-  color: var(--accent-color-two);
-  font-family: "Quicksand";
-  font-weight: bold;
   border-radius: 9px;
   padding: 5px 5px 6px 5px;
 }
