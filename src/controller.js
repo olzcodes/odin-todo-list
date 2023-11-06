@@ -98,7 +98,7 @@ const autoSaveProjectTitleChanges = function (projectId, title) {
   saveToLocalStorage();
 };
 
-const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
+const toggleTaskStatus = function (targetProject, taskId) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) {
       task.status === "pending"
@@ -108,12 +108,6 @@ const autoSaveTaskStatusChanges = function (targetProject, taskId, button) {
       task.inputStatus === "enabled"
         ? (task.inputStatus = "disabled")
         : (task.inputStatus = "enabled");
-
-      button.blur();
-
-      toggleTaskElementsOnStatusChange(button);
-
-      saveToLocalStorage();
     }
   });
 };
@@ -264,9 +258,12 @@ const clickHandlerBtnTaskStatus = function (targetProject) {
   const btnTaskPendingNL = document.querySelectorAll(".btn-task-status");
   btnTaskPendingNL.forEach((button) => {
     button.addEventListener("click", (e) => {
-      const taskId = e.target.closest(".task-card").dataset.taskId;
-      autoSaveTaskStatusChanges(targetProject, taskId, button);
       e.stopPropagation();
+      button.blur();
+      const taskId = e.target.closest(".task-card").dataset.taskId;
+      toggleTaskStatus(targetProject, taskId);
+      toggleTaskElementsOnStatusChange(button);
+      saveToLocalStorage();
     });
   });
 };
