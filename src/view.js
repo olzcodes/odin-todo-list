@@ -209,9 +209,10 @@ const toggleTaskElementsOnStatusChange = function (button) {
   taskTitleInputEl.classList.toggle("pending");
   taskDetailsEl.classList.toggle("completed");
   taskDetailsEl.classList.toggle("pending");
-  taskDetailsEl.classList.remove("visible");
   taskDescriptionEl.classList.toggle("completed");
   taskDescriptionEl.classList.toggle("pending");
+
+  taskDetailsEl.classList.remove("visible");
 
   taskTitleInputEl.disabled = !taskTitleInputEl.disabled;
   taskDescriptionEl.disabled = !taskDescriptionEl.disabled;
