@@ -24,7 +24,7 @@ const loadTasksView = function (targetProject, sortCriteria) {
   renderBreadcrumbNav(view, targetProject);
   clearItemContainer();
   renderTasks(targetProject.tasks, sortCriteria);
-  showTaskViewButtons();
+  showTaskViewButtons(targetProject);
   clickHandlerBtnSortByDueDate(targetProject);
   clickHandlerBtnSortByPriority(targetProject);
   clickHandlerBtnViewAllProjects();

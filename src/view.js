@@ -153,9 +153,11 @@ const renderTasks = function (targetProjectTasks, sortCriteria) {
   }
 };
 
-const showTaskViewButtons = function () {
-  btnSortByDueDate.classList.remove("hidden");
-  btnSortByPriority.classList.remove("hidden");
+const showTaskViewButtons = function (targetProject) {
+  if (targetProject.tasks.length > 1) {
+    btnSortByDueDate.classList.remove("hidden");
+    btnSortByPriority.classList.remove("hidden");
+  }
   btnBackToAllProjects.classList.remove("hidden");
 };
 
