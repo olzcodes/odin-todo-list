@@ -189,7 +189,7 @@ const toggleTaskDetails = function (taskCard) {
   taskDetailsEl.classList.toggle("visible");
 };
 
-const toggleTaskElementsOnStatusChange = function (button) {
+const toggleTaskElements = function (button) {
   button.classList.toggle("completed");
   button.classList.toggle("pending");
 
@@ -244,6 +244,6 @@ export {
   hideTaskViewButtons,
   showTopOfPage,
   autoAdjustHeight,
-  toggleTaskElementsOnStatusChange,
+  toggleTaskElements,
   clickHandlerCompletedTaskCard,
 };

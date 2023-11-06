@@ -1,6 +1,6 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, showTopOfPage, autoAdjustHeight,toggleTaskElementsOnStatusChange, clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
+import { renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 
@@ -262,7 +262,7 @@ const clickHandlerBtnTaskStatus = function (targetProject) {
       button.blur();
       const taskId = e.target.closest(".task-card").dataset.taskId;
       toggleTaskStatus(targetProject, taskId);
-      toggleTaskElementsOnStatusChange(button);
+      toggleTaskElements(button);
       saveToLocalStorage();
     });
   });
