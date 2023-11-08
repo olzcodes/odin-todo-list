@@ -172,15 +172,12 @@ const showTopOfPage = function () {
 };
 
 const autoAdjustHeight = function (taskDescriptionEl) {
-  taskDescriptionEl.addEventListener("blur", () => {
-    taskDescriptionEl.style.height = "";
-    taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
-  });
+  // Adjust height upon rendering or expansion of the task card
+  taskDescriptionEl.style.height = "";
+  taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
 
-  taskDescriptionEl.focus();
-  taskDescriptionEl.blur();
-
-  taskDescriptionEl.addEventListener("input", (e) => {
+  // Adjust height to accomodate additional lines of text as required
+  taskDescriptionEl.addEventListener("input", () => {
     taskDescriptionEl.style.height = "";
     taskDescriptionEl.style.height = taskDescriptionEl.scrollHeight + "px";
   });
