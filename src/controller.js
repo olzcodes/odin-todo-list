@@ -120,7 +120,7 @@ const autoSaveTaskTitleChanges = function (targetProject, taskId, taskTitle) {
 };
 
 // prettier-ignore
-const autoSaveTaskDescriptionChanges = function ( targetProject, taskId, taskDescriptionEl) {
+const autoSaveTaskDescriptionChanges = function (targetProject, taskId, taskDescriptionEl) {
   targetProject.tasks.forEach((task) => {
     if (task.id === taskId) task.description = taskDescriptionEl.value;
     saveToLocalStorage();
@@ -254,15 +254,19 @@ const inputHandlerProjectTitle = function () {
   );
 };
 
+// prettier-ignore
 const clickHandlerBtnTaskStatus = function (targetProject) {
   const btnTaskPendingNL = document.querySelectorAll(".btn-task-status");
   btnTaskPendingNL.forEach((button) => {
     button.addEventListener("click", (e) => {
       e.stopPropagation();
       button.blur();
-      const taskId = e.target.closest(".task-card").dataset.taskId;
+      const taskCard = e.target.closest(".task-card");
+      const taskId = taskCard.dataset.taskId;
+      const taskDescriptionEl = taskCard.querySelector(".input-task-description");
       toggleTaskStatus(targetProject, taskId);
       toggleTaskElements(button);
+      autoAdjustHeight(taskDescriptionEl);
       saveToLocalStorage();
     });
   });
@@ -281,10 +285,9 @@ const inputHandlerTaskTitle = function (targetProject) {
   );
 };
 
+// prettier-ignore
 const inputHandlerTaskDescription = function (targetProject) {
-  const taskDescriptionsNL = document.querySelectorAll(
-    ".input-task-description"
-  );
+  const taskDescriptionsNL = document.querySelectorAll(".input-task-description");
 
   if (!taskDescriptionsNL) return;
 
