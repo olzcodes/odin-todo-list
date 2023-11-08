@@ -222,12 +222,13 @@ const toggleTaskElements = function (button) {
   taskPriorityEl.disabled = !taskPriorityEl.disabled;
 };
 
+// prettier-ignore
 const clickHandlerCompletedTaskCard = function () {
   const completedTaskCardNL = document.querySelectorAll(".task-card");
   completedTaskCardNL.forEach((taskCard) => {
-    const taskDescriptionEl = taskCard.querySelector(".input-task-description");
     taskCard.addEventListener("click", () => {
       if (taskCard.classList.contains("completed")) {
+        const taskDescriptionEl = taskCard.querySelector(".input-task-description");
         taskDescriptionEl.disabled = false;
         autoAdjustHeight(taskDescriptionEl);
         taskDescriptionEl.disabled = true;
