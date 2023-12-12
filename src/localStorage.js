@@ -31,7 +31,8 @@ export const loadFromLocalStorage = function () {
     projectsWithFunctions[key] = new Project(
       value.id,
       value.title,
-      tasksWithFunctions
+      tasksWithFunctions,
+      value.index
     );
   }
 
