@@ -433,21 +433,21 @@ span.priority-indicator {
 }
 
 span.priority-indicator.low::after {
-  content: "⬤";
+  content: "●";
   color: mediumseagreen;
-  font-size: large;
+  font-size: xx-large;
 }
 
 span.priority-indicator.medium::after {
-  content: "⬤";
+  content: "●";
   color: gold;
-  font-size: large;
+  font-size: xx-large;
 }
 
 span.priority-indicator.high::after {
-  content: "⬤";
+  content: "●";
   color: coral;
-  font-size: large;
+  font-size: xx-large;
 }
 
 .priority-high {
