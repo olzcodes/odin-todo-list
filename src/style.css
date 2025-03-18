@@ -34,6 +34,21 @@
   --default-thickness: 2px;
 }
 
+:root.purple-theme {
+  --main-color: black;
+  --background-color: aliceblue;
+  --background-color-two: whitesmoke;
+  --accent-color: mediumslateblue;
+  --accent-color-two: white;
+  --accent-color-three: thistle;
+  --priority-high-color: palevioletred;
+  --active-color: mediumslateblue;
+  --active-color-two: white;
+  --inactive-color: silver;
+  --inactive-color-two: gray;
+  --default-thickness: 2px;
+}
+
 html {
   box-sizing: border-box;
   margin: 0px;
