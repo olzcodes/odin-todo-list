@@ -19,7 +19,7 @@
   font-style: normal;
 }
 
-:root.default-theme {
+:root.theme-1 {
   --main-color: black;
   --background-color: whitesmoke;
   --background-color-two: lavenderblush;
@@ -34,7 +34,7 @@
   --default-thickness: 2px;
 }
 
-:root.purple-theme {
+:root.theme-2 {
   --main-color: black;
   --background-color: aliceblue;
   --background-color-two: whitesmoke;
