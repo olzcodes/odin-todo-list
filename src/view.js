@@ -1,8 +1,30 @@
+const h1El = document.querySelector("h1");
 const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
 const btnSortByPriority = document.querySelector(".btn-sort-priority");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
 const itemContainer = document.querySelector(".item-container");
 const btnBackToAllProjects = document.querySelector(".btn-back-to-all-projects"); // prettier-ignore
+
+const setTheme = function (theme) {
+  document.documentElement.className = theme;
+  localStorage.setItem("theme", theme);
+};
+
+const loadTheme = function () {
+  if (localStorage.getItem("theme") !== null) {
+    setTheme(localStorage.getItem("theme"));
+  } else {
+    setTheme("theme");
+  }
+};
+
+const toggleTheme = function () {
+  h1El.addEventListener("click", function () {
+    document.documentElement.className === "theme-1"
+      ? setTheme("theme-2")
+      : setTheme("theme-1");
+  });
+};
 
 const renderBreadcrumbNav = function (view, currentProject) {
   if (view === "projects") {
@@ -236,6 +258,8 @@ const clickHandlerCompletedTaskCard = function () {
 };
 
 export {
+  loadTheme,
+  toggleTheme,
   renderBreadcrumbNav,
   clearItemContainer,
   renderAllProjects,
