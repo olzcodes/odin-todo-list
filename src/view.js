@@ -14,7 +14,7 @@ const loadTheme = function () {
   if (localStorage.getItem("theme") !== null) {
     setTheme(localStorage.getItem("theme"));
   } else {
-    setTheme("theme");
+    setTheme("theme-1");
   }
 };
 
