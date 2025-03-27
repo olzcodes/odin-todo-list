@@ -6,12 +6,12 @@ const lowerButtonsContainer = document.querySelector(".lower-buttons-container")
 
 const setTheme = function (theme) {
   document.documentElement.className = theme;
-  localStorage.setItem("theme", theme);
+  localStorage.setItem("odin-todo-list-theme", theme);
 };
 
 const loadTheme = function () {
   if (localStorage.getItem("theme") !== null) {
-    setTheme(localStorage.getItem("theme"));
+    setTheme(localStorage.getItem("odin-todo-list-theme"));
   } else {
     setTheme("theme-1");
   }
