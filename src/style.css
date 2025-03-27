@@ -120,14 +120,14 @@ button:hover {
   cursor: pointer;
 }
 
-nav.top-nav {
+nav.sort-buttons-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
-nav.top-nav button {
+nav.sort-buttons-container button {
   width: 96px;
   background-color: var(--accent-color-two);
   color: var(--accent-color);
@@ -138,7 +138,7 @@ nav.top-nav button {
   padding: 7px 8px 5px;
 }
 
-nav.top-nav button:hover {
+nav.sort-buttons-container button:hover {
   background-color: var(--accent-color-two);
   color: var(--accent-color);
   border: 2px solid var(--accent-color);
