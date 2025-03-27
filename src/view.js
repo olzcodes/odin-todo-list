@@ -1,9 +1,8 @@
 const h1El = document.querySelector("h1");
-const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
-const btnSortByPriority = document.querySelector(".btn-sort-priority");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
+const sortButtonsContainer = document.querySelector(".sort-buttons-container");
 const itemContainer = document.querySelector(".item-container");
-const btnBackToAllProjects = document.querySelector(".btn-back-to-all-projects"); // prettier-ignore
+const lowerButtonsContainer = document.querySelector(".lower-buttons-container"); // prettier-ignore
 
 const setTheme = function (theme) {
   document.documentElement.className = theme;
@@ -49,6 +48,34 @@ const renderBreadcrumbNav = function (view, currentProject) {
   `)
     );
   }
+};
+
+const renderProjectViewButtons = function () {
+  lowerButtonsContainer.innerHTML = `
+  <button class="btn-new-item">+</button>
+  `;
+};
+
+const clearProjectViewButtons = function () {
+  sortButtonsContainer.innerHTML = "";
+  lowerButtonsContainer.innerHTML = "";
+};
+
+const renderTaskViewButtons = function () {
+  sortButtonsContainer.innerHTML = `
+  <button class="btn-sort-due-date">Due Date</button>
+  <button class="btn-sort-priority">Priority</button>
+  `;
+
+  lowerButtonsContainer.innerHTML = `
+  <button class="btn-back-to-all-projects">&lt</button>
+  <button class="btn-new-item">+</button>
+  `;
+};
+
+const clearTaskViewButtons = function () {
+  sortButtonsContainer.innerHTML = "";
+  lowerButtonsContainer.innerHTML = "";
 };
 
 const clearItemContainer = function () {
@@ -176,17 +203,13 @@ const renderTasks = function (targetProjectTasks, sortCriteria) {
 };
 
 const showTaskViewButtons = function (targetProject) {
-  if (targetProject.tasks.length > 1) {
-    btnSortByDueDate.classList.remove("hidden");
-    btnSortByPriority.classList.remove("hidden");
-  }
-  btnBackToAllProjects.classList.remove("hidden");
-};
+  if (targetProject.tasks.length < 2) {
+    const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
+    const btnSortByPriority = document.querySelector(".btn-sort-priority");
 
-const hideTaskViewButtons = function () {
-  btnSortByDueDate.classList.add("hidden");
-  btnSortByPriority.classList.add("hidden");
-  btnBackToAllProjects.classList.add("hidden");
+    if (btnSortByDueDate) btnSortByDueDate.classList.add("hidden");
+    if (btnSortByPriority) btnSortByPriority.classList.add("hidden");
+  }
 };
 
 const showTopOfPage = function () {
@@ -260,12 +283,15 @@ const clickHandlerCompletedTaskCard = function () {
 export {
   loadTheme,
   toggleTheme,
+  renderProjectViewButtons,
+  clearProjectViewButtons,
+  renderTaskViewButtons,
+  clearTaskViewButtons,
   renderBreadcrumbNav,
   clearItemContainer,
   renderAllProjects,
   renderTasks,
   showTaskViewButtons,
-  hideTaskViewButtons,
   showTopOfPage,
   autoAdjustHeight,
   toggleTaskElements,

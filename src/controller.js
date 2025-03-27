@@ -1,6 +1,6 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { loadTheme, toggleTheme, renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, hideTaskViewButtons, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
+import { loadTheme, toggleTheme, renderProjectViewButtons, renderTaskViewButtons, clearProjectViewButtons, clearTaskViewButtons, renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 
@@ -10,10 +10,12 @@ let view;
 
 const loadProjectsView = function () {
   view = "projects";
+  clearTaskViewButtons();
+  renderProjectViewButtons();
+  clickHandlerBtnNewItem();
   renderBreadcrumbNav(view);
   clearItemContainer();
   renderAllProjects(projects);
-  hideTaskViewButtons();
   inputHandlerProjectTitle();
   clickHandlerDivProjectDetails();
   clickHandlerBtnDeleteProject();
@@ -21,6 +23,9 @@ const loadProjectsView = function () {
 
 const loadTasksView = function (targetProject, sortCriteria) {
   view = "tasks";
+  clearProjectViewButtons();
+  renderTaskViewButtons();
+  clickHandlerBtnNewItem();
   renderBreadcrumbNav(view, targetProject);
   clearItemContainer();
   renderTasks(targetProject.tasks, sortCriteria);
@@ -328,6 +333,7 @@ const clickHandlerBtnTaskPriority = function (targetProject) {
 // Initialize app
 const initApp = function () {
   loadProjectsView();
+  renderProjectViewButtons();
   clickHandlerBtnNewItem();
   loadTheme();
   toggleTheme();
