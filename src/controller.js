@@ -168,12 +168,10 @@ const toggleTaskPriorty = function (targetProject, taskId, button) {
 };
 
 const sortByDueDate = function (targetProject) {
-  console.log(targetProject, "sort by date");
   loadTasksView(targetProject, "dueDate");
 };
 
 const sortByPriority = function (targetProject) {
-  console.log(targetProject, "sort by priority");
   loadTasksView(targetProject, "priority");
 };
 
