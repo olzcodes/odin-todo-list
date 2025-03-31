@@ -1,3 +1,5 @@
+import { el } from "date-fns/locale";
+
 const h1El = document.querySelector("h1");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
 const sortButtonsContainer = document.querySelector(".sort-buttons-container");
@@ -88,7 +90,7 @@ const renderProjectCard = function (project) {
     project.tasks.forEach((task) => {
       if (task.status === "pending") taskCount += 1;
     });
-    return `${taskCount} pending tasks`;
+    return `${taskCount} pending task${taskCount > 1 ? "s" : ""}`;
   };
 
   const projectCard = document.createElement("div");
