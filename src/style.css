@@ -116,6 +116,10 @@ h1 {
   padding-top: 5px;
 }
 
+h1 {
+  cursor: pointer;
+}
+
 button:hover {
   cursor: pointer;
 }
@@ -372,6 +376,10 @@ button.btn-task-delete:hover {
   font-size: medium;
   border-radius: 0px 0px 9px 9px;
   padding: 10px 15px 10px;
+}
+
+.project-details > div:hover {
+  text-decoration: underline;
 }
 
 .task-details {
