@@ -7,6 +7,7 @@ import { demoProjects } from "./demoData";
 let projects = loadFromLocalStorage() || demoProjects;
 let targetProject;
 let view;
+let defaultSortingMode = "dueDate";
 
 const loadProjectsView = function () {
   view = "projects";
@@ -78,7 +79,7 @@ const createNewTask = function () {
   );
   saveToLocalStorage();
   clearItemContainer();
-  loadTasksView(targetProject);
+  loadTasksView(targetProject, defaultSortingMode);
   const inputTaskTitle = document.querySelector(".input-task-title");
   inputTaskTitle.focus();
 };
@@ -93,7 +94,7 @@ const deleteTask = function (e) {
   if (!confirmDelete) return;
   targetProject.deleteTask(taskId);
   saveToLocalStorage();
-  loadTasksView(targetProject);
+  loadTasksView(targetProject, defaultSortingMode);
 };
 
 // Save functions triggered by inputs/edits
@@ -183,7 +184,7 @@ const clickHandlerDivProjectDetails = function () {
     projectDetail.addEventListener("click", () => {
       const projectCardId = projectDetail.parentElement.dataset.projectId;
       targetProject = projects[projectCardId];
-      loadTasksView(targetProject);
+      loadTasksView(targetProject, defaultSortingMode);
     });
   });
 };
