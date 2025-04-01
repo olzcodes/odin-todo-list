@@ -214,6 +214,21 @@ const showTaskViewButtons = function (targetProject) {
   }
 };
 
+const showSortingMode = function (sortCriteria) {
+  const btnSortByDueDate = document.querySelector(".btn-sort-due-date");
+  const btnSortByPriority = document.querySelector(".btn-sort-priority");
+  switch (sortCriteria) {
+    case "dueDate":
+      btnSortByDueDate.classList.add("highlight");
+      btnSortByPriority.classList.remove("highlight");
+      break;
+    case "priority":
+      btnSortByDueDate.classList.remove("highlight");
+      btnSortByPriority.classList.add("highlight");
+      break;
+  }
+};
+
 const showTopOfPage = function () {
   window.scrollTo(0, 0);
 };
@@ -294,6 +309,7 @@ export {
   renderAllProjects,
   renderTasks,
   showTaskViewButtons,
+  showSortingMode,
   showTopOfPage,
   autoAdjustHeight,
   toggleTaskElements,
