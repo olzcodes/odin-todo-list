@@ -95,7 +95,7 @@ const deleteTask = function (e) {
   if (!confirmDelete) return;
   targetProject.deleteTask(taskId);
   saveToLocalStorage();
-  loadTasksView(targetProject, defaultSortingMode);
+  loadTasksView(targetProject);
 };
 
 // Save functions triggered by inputs/edits
