@@ -80,7 +80,7 @@ const createNewTask = function () {
   );
   saveToLocalStorage();
   clearItemContainer();
-  loadTasksView(targetProject, defaultSortingMode);
+  loadTasksView(targetProject);
   const inputTaskTitle = document.querySelector(".input-task-title");
   inputTaskTitle.focus();
 };
