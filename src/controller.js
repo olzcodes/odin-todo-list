@@ -74,11 +74,9 @@ const deleteProject = function (e) {
 
 const createNewTask = function () {
   const id = `T${new Date().getTime()}`;
-  targetProject.addTask(
-    new Task(id, "", "", "", "pending", "medium", "enabled")
-  );
+  const newTask = new Task(id, "", "", "", "pending", "medium", "enabled");
+  targetProject.addTask(newTask);
   saveToLocalStorage();
-  clearItemContainer();
   loadTasksView(targetProject);
   const inputTaskTitle = document.querySelector(".input-task-title");
   inputTaskTitle.focus();
