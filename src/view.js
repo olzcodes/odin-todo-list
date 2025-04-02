@@ -9,12 +9,9 @@ const setTheme = function (theme) {
   localStorage.setItem("odin-todo-list-theme", theme);
 };
 
-const loadTheme = function () {
-  if (localStorage.getItem("theme") !== null) {
-    setTheme(localStorage.getItem("odin-todo-list-theme"));
-  } else {
-    setTheme("theme-1");
-  }
+const getTheme = function () {
+  const theme = localStorage.getItem("odin-todo-list-theme") || "theme-1";
+  setTheme(theme);
 };
 
 const toggleTheme = function () {
@@ -306,7 +303,7 @@ const clickHandlerCompletedTaskCard = function () {
 };
 
 export {
-  loadTheme,
+  getTheme,
   toggleTheme,
   setSortingMode,
   getSortingMode,

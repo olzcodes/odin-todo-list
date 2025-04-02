@@ -1,6 +1,6 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { loadTheme, toggleTheme, renderProjectViewButtons, renderTaskViewButtons, clearProjectViewButtons, clearTaskViewButtons, renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, showSortingMode, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard, getSortingMode, setSortingMode } from "./view"; // prettier-ignore
+import { getTheme, toggleTheme, renderProjectViewButtons, renderTaskViewButtons, clearProjectViewButtons, clearTaskViewButtons, renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, showSortingMode, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard, getSortingMode, setSortingMode } from "./view"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 
@@ -336,7 +336,7 @@ const initApp = function () {
   loadProjectsView();
   renderProjectViewButtons();
   clickHandlerBtnNewItem();
-  loadTheme();
+  getTheme();
   toggleTheme();
 };
 
