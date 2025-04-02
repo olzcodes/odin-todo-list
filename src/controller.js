@@ -1,13 +1,12 @@
 import { Project } from "./project";
 import { Task } from "./task";
-import { loadTheme, toggleTheme, renderProjectViewButtons, renderTaskViewButtons, clearProjectViewButtons, clearTaskViewButtons, renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, showSortingMode, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard } from "./view"; // prettier-ignore
+import { loadTheme, toggleTheme, renderProjectViewButtons, renderTaskViewButtons, clearProjectViewButtons, clearTaskViewButtons, renderBreadcrumbNav, clearItemContainer, renderAllProjects, renderTasks, showTaskViewButtons, showSortingMode, showTopOfPage, autoAdjustHeight,toggleTaskElements, clickHandlerCompletedTaskCard, getSortingMode, setSortingMode } from "./view"; // prettier-ignore
 import { saveToLocalStorage, loadFromLocalStorage } from "./localStorage";
 import { demoProjects } from "./demoData";
 
 let projects = loadFromLocalStorage() || demoProjects;
 let targetProject;
 let view;
-let defaultSortingMode = "dueDate";
 
 const loadProjectsView = function () {
   view = "projects";
@@ -171,10 +170,12 @@ const toggleTaskPriorty = function (targetProject, taskId, button) {
 
 const sortByDueDate = function (targetProject) {
   loadTasksView(targetProject, "dueDate");
+  setSortingMode("dueDate");
 };
 
 const sortByPriority = function (targetProject) {
   loadTasksView(targetProject, "priority");
+  setSortingMode("priority");
 };
 
 // Event handlers - Navigation
@@ -185,7 +186,7 @@ const clickHandlerDivProjectDetails = function () {
     projectDetail.addEventListener("click", () => {
       const projectCardId = projectDetail.parentElement.dataset.projectId;
       targetProject = projects[projectCardId];
-      loadTasksView(targetProject, defaultSortingMode);
+      loadTasksView(targetProject, getSortingMode());
     });
   });
 };

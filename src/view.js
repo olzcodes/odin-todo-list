@@ -27,6 +27,16 @@ const toggleTheme = function () {
   });
 };
 
+const setSortingMode = function (sortingMode) {
+  localStorage.setItem("odin-todo-list-sorting", sortingMode);
+};
+
+const getSortingMode = function () {
+  let sortingMode = localStorage.getItem("odin-todo-list-sorting") || "dueDate";
+  setSortingMode(sortingMode);
+  return sortingMode;
+};
+
 const renderBreadcrumbNav = function (view, currentProject) {
   if (view === "projects") {
     breadcrumbNav.forEach((element) => (element.innerHTML = ``));
@@ -300,6 +310,8 @@ const clickHandlerCompletedTaskCard = function () {
 export {
   loadTheme,
   toggleTheme,
+  setSortingMode,
+  getSortingMode,
   renderProjectViewButtons,
   clearProjectViewButtons,
   renderTaskViewButtons,
