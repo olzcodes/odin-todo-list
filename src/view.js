@@ -1,5 +1,3 @@
-import { el } from "date-fns/locale";
-
 const h1El = document.querySelector("h1");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
 const sortButtonsContainer = document.querySelector(".sort-buttons-container");
