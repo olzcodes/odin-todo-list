@@ -1,3 +1,5 @@
+import { parseISO } from "date-fns";
+
 const h1El = document.querySelector("h1");
 const breadcrumbNav = document.querySelectorAll(".breadcrumb-nav");
 const sortButtonsContainer = document.querySelector(".sort-buttons-container");
@@ -169,8 +171,9 @@ const sortTasksByDueDate = function (targetProjectTasks) {
   while (!isSorted) {
     isSorted = true;
     for (let i = 0; i < tasks.length - 1; i++) {
-      const date1 = new Date(tasks[i].dueDate);
-      const date2 = new Date(tasks[i + 1].dueDate);
+      const year3000 = parseISO("3000-01-01T00:00:00Z"); // Placeholder future date to handle tasks with no due date
+      const date1 = new Date(tasks[i].dueDate || year3000);
+      const date2 = new Date(tasks[i + 1].dueDate || year3000);
       if (date1 > date2) {
         let temp = tasks[i + 1];
         tasks[i + 1] = tasks[i];
