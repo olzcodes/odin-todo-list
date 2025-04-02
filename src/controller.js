@@ -73,7 +73,7 @@ const deleteProject = function (e) {
 };
 
 const createNewTask = function () {
-  let id = `T${new Date().getTime()}`;
+  const id = `T${new Date().getTime()}`;
   targetProject.addTask(
     new Task(id, "", "", "", "pending", "medium", "enabled")
   );
