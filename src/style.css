@@ -75,6 +75,18 @@ h6 {
   margin: 0px;
 }
 
+h1,
+.breadcrumb-nav,
+.project-details,
+.btn-project-delete,
+.sort-buttons-container,
+.task-days-remaining,
+.priority-label {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
 body {
   height: 100vh;
   background-color: var(--background-color);
