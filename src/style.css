@@ -77,9 +77,10 @@ h6 {
 
 h1,
 .breadcrumb-nav,
+.sort-buttons-container,
 .project-details,
 .btn-project-delete,
-.sort-buttons-container,
+.btn-task-delete,
 .task-days-remaining,
 .priority-label {
   -webkit-user-select: none; /* Safari */
